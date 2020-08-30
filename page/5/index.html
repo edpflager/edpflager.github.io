@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="EdPflager.com">
+<meta property="og:url" content="http://edpflager.github.io/page/5/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Ed Pflager">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-create-a-pentaho-kettle-repository-on-sql-server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/31/create-a-pentaho-kettle-repository-on-sql-server/" class="article-date">
+  <time datetime="2017-01-31T15:43:29.000Z" itemprop="datePublished">2017-01-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/31/create-a-pentaho-kettle-repository-on-sql-server/">Create a Pentaho Kettle Repository on SQL Server</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3516#main"><img src="http://edpflager.com/wp-content/uploads/2017/01/black-tea-kettle-pv-300x225.jpg"></a>As I have stated previously when creating ETL workflows, its useful to store the information in a database repository, rather than as individual files on your workstation. This allows multiple users to have access to the information (why recreate the wheel?),  it allows you to pull it into your jobs quickly and easily, and you can back it up quickly and restore it if necessary. With the community version 7.0 of PENTAHO® DATA INTEGRATION (PDI), I am happy to report that you can finally create a repository for your ETL code on Microsoft SQL Server. Previously, you could <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1622">setup a repository on MySQL</a> or PostgreSQL with the community edition but there were compatibility problems with the code that Kettle used that didn’t work with SQL Server. After downloading the latest version I was attempting to make a connection to SQL Server, and decided to test setting up a repository again. I am happy to say it works so the remainder of this article will walk through the process of setting up a Pentaho repository on SQL Server 2016 from a Windows 10 machine. Prerequisites:</p>
+<ul>
+<li>Download the <a target="_blank" rel="noopener" href="http://jtds.sourceforge.net/">jTDS open source SQL Server JDBC driver</a>. Extract the ZIP file, and copy the jtds-1.3.1.jar file from your download and save it into the data-integrationlib folder of your Pentaho application. Although Microsoft provides a JDBC driver, it did not work for me.</li>
+<li>Create an empty database on your Microsoft SQL Server. I created one called “PentahoRepository”</li>
+<li>Setup a SQL Server user account (not an Active Directory account) on your database server and give the account  DBO (owner) permissions on the database. Using a DDLADMIN level does not work. I created my account and called it “repository”. I also set the default database for this account to the new database.</li>
+</ul>
+<p>Now that we have our prerequisites setup, we can start the PDI client.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/31/create-a-pentaho-kettle-repository-on-sql-server/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2017/01/31/create-a-pentaho-kettle-repository-on-sql-server/" data-id="ckegh1zxu00193ouegdjrh2o6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-running-pentaho-kettle-7-on-windows-10" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/21/running-pentaho-kettle-7-on-windows-10/" class="article-date">
+  <time datetime="2017-01-21T14:12:38.000Z" itemprop="datePublished">2017-01-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/21/running-pentaho-kettle-7-on-windows-10/">Running Pentaho Kettle 7 on Windows 10</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Recently I switched PCs to a newer Windows 10 based laptop for some of my work, and I wanted to get Pentaho Data Integration up and running on it. I downloaded the pdi-ce-7.0.0.0.25.zip file from the Community website, and extracted the contents to a folder in my Program Files directory. I tried running the SPOON.BAT to start it up but a window flashed on screen quickly and disappeared, but nothing else happened. I opened a command prompt and executed the SPOON.BAT file, but got a message that the JAVAW.EXE file could not be found. So I needed to perform a few other things to get it working. A quick search engine query showed me that many people had the same issue, but there didn’t seem to be a consensus on how to resolve it. Below is how I managed to get it running.</p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/21/running-pentaho-kettle-7-on-windows-10/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2017/01/21/running-pentaho-kettle-7-on-windows-10/" data-id="ckegh2017009i3oue84xjf3ip" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-microsoft-sql-server-on-docker-part-2-use-adventureworks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/30/microsoft-sql-server-on-docker-part-2-use-adventureworks/" class="article-date">
+  <time datetime="2016-11-30T18:58:33.000Z" itemprop="datePublished">2016-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/30/microsoft-sql-server-on-docker-part-2-use-adventureworks/">Microsoft SQL Server on Docker (part 2) - Use AdventureWorks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3463#main"><img src="http://edpflager.com/wp-content/uploads/2016/11/sql_on_docker-300x229.jpg" alt="sql_on_docker"></a>In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=3447">part one of this series</a>, I provided some info on Microsoft’s implementation of Sql Server on Docker and provided a method to have your SQL Server databases saved on your Docker host system so that they would remain persistent if the SQL Server container was shutdown. This time around, we’ll look at how to restore Microsoft’s sample database AdventureWorks to your SQL Server container.</p>
+<h5 id="DOWNLOAD-ADVENTUREWORKS"><a href="#DOWNLOAD-ADVENTUREWORKS" class="headerlink" title="DOWNLOAD ADVENTUREWORKS"></a>DOWNLOAD ADVENTUREWORKS</h5><p>If you followed my instructions from part 1 of this article you have a SQL Server container up and running with a data folder on your Docker host. Within that folder, you have several subfolders that SQL Server uses. You need to download a copy of AdventureWorks and save it in that folder. There are multiple versions available, as Microsoft provides a new version with every upgrade to SQL Server. The 2014 version should work fine for this purpose (If you download the 2016CTP version the restore command below will not work because that version includes FILESTREAM as part of the backup. An addition MOVE command needs to be supplied to include that in the RESTORE). Go to this <a target="_blank" rel="noopener" href="https://msftdbprodsamples.codeplex.com/releases/view/125550">website</a>, and download Adventure Works 2014 Full Database Backup.zip. I renamed the file to just AdventureWorks.zip to make it easier to transfer to my Docker host system and used scp to transfer it:</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/30/microsoft-sql-server-on-docker-part-2-use-adventureworks/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/11/30/microsoft-sql-server-on-docker-part-2-use-adventureworks/" data-id="ckegh1zzt00603oueez8zfkos" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-microsoft-sql-server-on-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/28/microsoft-sql-server-on-docker/" class="article-date">
+  <time datetime="2016-11-28T10:45:09.000Z" itemprop="datePublished">2016-11-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/28/microsoft-sql-server-on-docker/">Microsoft SQL Server on Docker (part 1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3463#main"><img src="http://edpflager.com/wp-content/uploads/2016/11/sql_on_docker-300x229.jpg" alt="sql_on_docker"></a>After last week’s announcement that Microsoft has released a Public Preview version of SQL Server that would run on Linux platforms (currently Ubuntu 16.04 and Red Hat Enterprise 7.2), I wondered if a Docker version was going to be made available as well. Checking out Microsoft’s <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux?wt.mc_id=AID533228_EML_4683749#resources">SQL Server v.Next website</a>, I quickly saw that <strong>Lo and behold!</strong> there was! As I stated previously, a good portion of my professional career has been spent working with Microsoft SQL Server and a lot of my spare time is spent experimenting with Linux and Open Source applications. The merging of the two is hugely exciting to me and the ability to run SQL Server in a Docker container is amazing! Previous Docker containers of Microsoft products have been a mixed bag of requirements. Some required you to run the Docker engine on a Windows platform in order for it to work, while others could be run on different Linux variants. Even the previously released version of SQL Server Express, the free version of SQL would only work on Windows hosted containers. But so far it seems with this version of SQL Server, Microsoft may be starting to explore the open source world possibilities. There are some caveats though:</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/11/28/microsoft-sql-server-on-docker/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/11/28/microsoft-sql-server-on-docker/" data-id="ckegh1zzu00643oue047i6tmg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker-fun-play-text-adventures" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/15/docker-fun-play-text-adventures/" class="article-date">
+  <time datetime="2016-10-15T15:57:50.000Z" itemprop="datePublished">2016-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/15/docker-fun-play-text-adventures/">Docker Fun - Play Text Adventures</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3414#main"><img src="http://edpflager.com/wp-content/uploads/2016/10/zork-300x165.png" alt="zork"></a>This time around in the Docker Fun series, we are getting a little more ambitious. Zork was one of the first popular text adventures, building on the work of Will Crowther and Dan Wells who created the mainframe game Colossal Cave (aka Adventure). Zork was originally written to run on a DEC PDP-10 system, and was later ported to just about every personal computer that was available. While text adventures at that time were struggling with two word commands like “Open Door”, Zork understood much more elaborate command like “Hit the grue with the Elvish sword”. The developers of Zork founded Infocom and eventually released a number of sequels and prequels to Zork as well as several dozen other text adventures in a number of different genres. Eventually the company was sold to Activision and the Infocom games have since lapsed into a sort of purgatory. Technically the download file for Zork is in violation of copyright laws, so feel free to substitute one of the many free Z5 files available on the Internet.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/10/15/docker-fun-play-text-adventures/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/10/15/docker-fun-play-text-adventures/" data-id="ckegh1zy800253oue3aqi3wyu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-interesting-docker-containers-and-some-tips-on-running-them" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/31/interesting-docker-containers-and-some-tips-on-running-them/" class="article-date">
+  <time datetime="2016-07-31T13:10:13.000Z" itemprop="datePublished">2016-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/31/interesting-docker-containers-and-some-tips-on-running-them/">Interesting Docker Containers (and some tips on running them)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3385#main"><img src="http://edpflager.com/wp-content/uploads/2016/07/shipping-82339-300x225.jpg" alt="shipping-82339"></a>I’ve been learning how to use Docker for the last couple of months. Part of that experience has been downloading and working with various freely available containers from the Docker Hub. Since an ever increasing number applications are web based (i.e using a website as a UI tool) porting many open source projects to use Docker is becoming less complex. While not all open source applications can benefit yet from containerization, I think its only a matter of time before this technology starts to really gain in popularity.</p>
+<p>My area of interest tends to fall more towards Business Intelligence and related technologies, so what I’ve been experimenting with are containers in that realm. This time around, I’ll discuss these containers and my experience getting them running on a native Docker installation on Ubuntu:</p>
+<ul>
+<li>Rstudio</li>
+<li>Cloudera Hadoop</li>
+<li>ODOO with Postgresql
+        
+          <p class="article-more-link">
+            <a href="/2016/07/31/interesting-docker-containers-and-some-tips-on-running-them/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/07/31/interesting-docker-containers-and-some-tips-on-running-them/" data-id="ckegh1zzj00543oue7g8eb7ao" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker-handy-tip-for-frequent-command" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/09/docker-handy-tip-for-frequent-command/" class="article-date">
+  <time datetime="2016-07-09T19:42:50.000Z" itemprop="datePublished">2016-07-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/09/docker-handy-tip-for-frequent-command/">Docker - Handy Tip for Frequent Command</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3372#main"><img src="http://edpflager.com/wp-content/uploads/2016/07/containers-small-300x225.jpg" alt="containers-small"></a>One command I use a lot when working with Docker, is <strong>docker ps -a</strong> to see what containers I have and which ones are active. To save a little time when entering that command, create an alias in your BASH profile for that command.</p>
+<ol>
+<li>From a command prompt, change to your home folder: cd ~</li>
+<li>Edit the .bashrc file with a text editor. In my case, I use NANO: nano ./.bashrc (Note: Earlier versions of Mint supported editing the .profile file. This no longer works).</li>
+<li>Add this line to the end of the file:  <strong>alias dpa=”docker ps -a”</strong></li>
+<li>Save the file with CTRL-O and exit back to a command prompt with CTRL-X.</li>
+<li>Logout and log back in.</li>
+<li>At a command prompt enter: <strong>dpa</strong>. You’ll see the results of <strong>docker ps -a</strong> but without all the typing!</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/07/09/docker-handy-tip-for-frequent-command/" data-id="ckegh1zy900293oueax8a3wxu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-configure-your-ubuntu-docker-installation-for-remote-access" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/07/03/configure-your-ubuntu-docker-installation-for-remote-access/" class="article-date">
+  <time datetime="2016-07-03T08:16:36.000Z" itemprop="datePublished">2016-07-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/03/configure-your-ubuntu-docker-installation-for-remote-access/">Configure your Ubuntu Docker installation for remote access</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3359#main"><img src="http://edpflager.com/wp-content/uploads/2016/07/container-300x185.jpg" alt="container"></a>The default installation for Docker on Ubuntu server (16.04) configures the daemon (service) to listen on a local socket. But what if you want to access your Docker daemon remotely, from another box, If you are using the default configuration, you would need to open a Secure Shell to the server, and access Docker that way. But there is a way to setup Docker to allow remote access. First, lets verify that Docker is only working with a local socket.  On the server,  run from this command line:</p>
+<p>ls -l /run</p>
+<p>The results show have an entry with the docker.sock entry like this: <a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3348#main"><img src="http://edpflager.com/wp-content/uploads/2016/07/dockersocket-1024x178.png" alt="dockersocket"></a> And you can check that the daemon is not listening on any ports on your system by running this command:</p>
+<p>sudo netstat -tlp</p>
+<p>No Docker application should be listed in the results. <a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3355#main"><img src="http://edpflager.com/wp-content/uploads/2016/07/NoDocker_port-1024x107.png" alt="NoDocker_port"></a></p>
+        
+          <p class="article-more-link">
+            <a href="/2016/07/03/configure-your-ubuntu-docker-installation-for-remote-access/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/07/03/configure-your-ubuntu-docker-installation-for-remote-access/" data-id="ckegh1zxq00133oue6raabjr3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-install-the-saiku-analytics-plugin-in-pentaho-biserver-ce" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/05/install-the-saiku-analytics-plugin-in-pentaho-biserver-ce/" class="article-date">
+  <time datetime="2016-06-05T05:52:15.000Z" itemprop="datePublished">2016-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/05/install-the-saiku-analytics-plugin-in-pentaho-biserver-ce/">Install the Saiku Analytics plugin in Pentaho BIServer CE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3324#main"><img src="http://edpflager.com/wp-content/uploads/2016/06/meterorite-300x180.jpg" alt="meterorite"></a> I’ve been working with Mondrian and Pentaho’s Schema Workbench lately and attempted to add Meteorite Consulting’s Saiku Analytic plugin to my installation of Pentaho BI Server community edition, to process some MDX queries. MDX is a query language similar to SQL that is used for processing database cubes. Mondrian is a OLAP engine that implements the MDX language and is incorporated into the Saiku Analytic software. It differs from other OLAP engines in that the cubes are built on the fly as the query processes, rather than having the cube data stored on a server. For simpler cubes, the trade off between a slightly slower build time and disk space is negligible. Here is the process I followed to get Saiku enabled in my BI Server:</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/05/install-the-saiku-analytics-plugin-in-pentaho-biserver-ce/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/06/05/install-the-saiku-analytics-plugin-in-pentaho-biserver-ce/" data-id="ckegh1zzf004w3oueclvbgfjl" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-access-a-mysql-server-remotely" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/31/access-a-mysql-server-remotely/" class="article-date">
+  <time datetime="2016-05-31T04:49:13.000Z" itemprop="datePublished">2016-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/31/access-a-mysql-server-remotely/">Access a MySQL Server Remotely</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=2588#main"><img src="http://edpflager.com/wp-content/uploads/2014/11/logo-mysql.png" alt="logo-mysql"></a>A quick one today: While working on a project, I couldn’t access the MySQL server (version 5.7.12) that was on another system. I was in a development environment on a local network with just me on in, so the MySQL server did not have a firewall running. Here is what I did to get my connection to work.</p>
+<ol>
+<li><p>Add an Administrator user account with permissions to connect from any host:</p>
+<p><strong><code>CREATE USER &#39;edpflager&#39;@&#39;%&#39; IDENTIFIED BY &#39;my_password&#39;;</code></strong> <strong><code>GRANT ALL PRIVILEGES ON *.* TO &#39;edpflager&#39;@&#39;%&#39;</code></strong> <strong><code>WITH GRANT OPTION;</code></strong></p>
+</li>
+<li><p>Next open a terminal prompt on the MySQL server, and navigate to /etc/mysql/mysql.conf.d</p>
+</li>
+<li><p>Open a text editor as superuser  and edit mysqld.cnf</p>
+<p>sudo nano ./mysqld.cnf</p>
+</li>
+<li><p>Find the following line and add a # to the beginning to comment it out:</p>
+<p>bind-address = 127.0.0.1</p>
+</li>
+<li><p>Save, exit, and restart MySQL to make it take effect.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/05/31/access-a-mysql-server-remotely/" data-id="ckegh1zwt00003ouedv0jhkxi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

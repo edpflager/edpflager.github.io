@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>SQuirreL SQL Client for accessing different databases - Part 2 | EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="In my last post on using SQuirrel SQL Client (aka Squirrel), I walked through downloading and installing it, and adding a connection to a locally hosted MySQL database. This time, I walk through using">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQuirreL SQL Client for accessing different databases - Part 2">
+<meta property="og:url" content="http://edpflager.github.io/2015/06/29/squirrel-sql-client-for-accessing-different-databases-part-2/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:description" content="In my last post on using SQuirrel SQL Client (aka Squirrel), I walked through downloading and installing it, and adding a connection to a locally hosted MySQL database. This time, I walk through using">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/squirrel2.jpg">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/mysql_login-278x300.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/catalog.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/Objects-1024x475.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/actor_table-1024x478.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/QueryWindowpng-1024x563.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/ReadOn-1024x630.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/06/overview-1024x329.png">
+<meta property="article:published_time" content="2015-06-29T02:38:31.000Z">
+<meta property="article:modified_time" content="2020-08-30T02:25:28.148Z">
+<meta property="article:author" content="Ed Pflager">
+<meta property="article:tag" content="ETL">
+<meta property="article:tag" content="How-to">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="SysAdmin">
+<meta property="article:tag" content="technical">
+<meta property="article:tag" content="install">
+<meta property="article:tag" content="Mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://edpflager.com/wp-content/uploads/2015/06/squirrel2.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-squirrel-sql-client-for-accessing-different-databases-part-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/29/squirrel-sql-client-for-accessing-different-databases-part-2/" class="article-date">
+  <time datetime="2015-06-29T02:38:31.000Z" itemprop="datePublished">2015-06-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQuirreL SQL Client for accessing different databases - Part 2
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/06/squirrel2.jpg"><img src="http://edpflager.com/wp-content/uploads/2015/06/squirrel2.jpg" alt="squirrel2"></a>In my l<a target="_blank" rel="noopener" href="http://edpflager.com/?p=2778">ast post on using SQuirrel SQL Client</a> (aka Squirrel), I walked through downloading and installing it, and adding a connection to a locally hosted MySQL database. This time, I walk through using Squirrel to manipulate the MySQL database. I’m assuming you have the MySQL test database Sakila installed for this. If not, check out the <a target="_blank" rel="noopener" href="http://dev.mysql.com/doc/sakila/en/sakila-installation.html">documentation</a> at the MySQL website.</p>
+<h5 id="OBJECTS-DISPLAY"><a href="#OBJECTS-DISPLAY" class="headerlink" title="OBJECTS DISPLAY"></a>OBJECTS DISPLAY</h5><ol>
+<li><p>Open Squirrel, and from the Aliases tab on the left, double click the entry you setup in Part 1, for the MySQL database. The Connect to window will appear. In the URL field, make sure you have specified a database name. For my setup, the URL reads: <strong>jdbc:mysql://localhost:3306/sakila <a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/06/mysql_login.png"><img src="http://edpflager.com/wp-content/uploads/2015/06/mysql_login-278x300.png" alt="mysql_login"></a></strong> </p>
+</li>
+<li><p>Enter your password in the appropriate spot and click Connect at the bottom.</p>
+</li>
+<li><p>On the main work area in the center of the screen, a new window will appear with A LOT going on. In the upper left portion will be a drop down list labeled Catalog. Currently the list should show “sakila” as the selected entry. (Even though all of the databases you have access to on the server will show up in the Object list, in order to switch to a different database, you’ll need to select the new database from the Catalog drop down list.)<img src="http://edpflager.com/wp-content/uploads/2015/06/catalog.png" alt="catalog"></p>
+</li>
+<li><p>Below the Catalog list you’ll see two tabs (on Mac OS X you-ll see buttons instead of tabs): <strong>Objects</strong> and <strong>SQL.</strong> If <strong>Objects</strong> is not selected, click on it to make it active. Below Objects on the left will be a search field, and then below that will be an object tree, showing the MySQL databases on the server you are connected to, and at the bottom, a USERS entry. To the right you’ll see a set of tabs, a large number of them being reference ones:</p>
+<ul>
+<li>FUNCTION names for numbers, strings and time/date and</li>
+<li>KEYWORDS - reserved keywords for the particular database</li>
+<li>TABLE and DATA TYPES -lists of the various kinds of tables and field types the particular database supports.</li>
+</ul>
+</li>
+<li><p>Depending on the RDBMS you are connected to you may see system maintenance tabs as well. [caption id=”attachment_2832” align=”aligncenter” width=”500”]<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/06/Objects.png"><img src="http://edpflager.com/wp-content/uploads/2015/06/Objects-1024x475.png" alt="Objects"></a> SQuirreL SQL Client connected to MySQL database. Objects tab active.[/caption]</p>
+<h4 id="Please-Note-None-of-the-information-displayed-in-the-Objects-area-is-editable-by-the-user-It-is-read-only"><a href="#Please-Note-None-of-the-information-displayed-in-the-Objects-area-is-editable-by-the-user-It-is-read-only" class="headerlink" title="Please Note: None of the information displayed in the Objects area is editable by the user. It is read only."></a>Please Note: None of the information displayed in the Objects area is editable by the user. It is read only.</h4></li>
+<li><p>Double click the entry for “sakila” in the tree, to toggle it open and display its sub-tree. The tabs displayed on the right will change and only a few will be shown. The Info tab will give you some very brief Name information about the database. Click on the MySQL Open tables and you will see a list of the tables in the “sakila” database and if the table is in use and/or locked. Click on the MySQL Table Status tab, and you’ll get more information about each table and view in the database (MySQL Engine in use, how many rows in the table, etc).</p>
+</li>
+<li><p>Double click the entry labeled TABLE under “sakila” to see a list of tables within the database. The window on the right will clear, until you select a table, so click on the first one, labeled “actor”. [caption id=”attachment_2837” align=”aligncenter” width=”500”]<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/06/actor_table.png"><img src="http://edpflager.com/wp-content/uploads/2015/06/actor_table-1024x478.png" alt="actor_table"></a> SQuirreL SQL Client connected to MySQL database with table selected[/caption]</p>
+<ul>
+<li>The first tab, <strong>Info</strong> again provides some basic naming information about the table.</li>
+<li>Click the second tab (<strong>Content</strong>) and you can see the first 100 records in the table.</li>
+<li><strong>Row Count</strong> shows you how many records are in the table.</li>
+<li><strong>Columns</strong> provides information on the fields in the table.</li>
+<li>There are several tabs showing information about Primary Keys and Exported and Imported Keys (Foreign Key relationships).</li>
+<li>Several other tabs are also present, covering various settings and configurations of the database. Depending on the RDBMS you are connected to, what you see may vary.</li>
+</ul>
+</li>
+<li><p>Below the TABLE entry in the Object list on the left, there is a VIEW entry. Double click that to see the VIEWS that are part of the database. In the “sakila” database there are seven of them, and clicking on each will update the window to the right with information about them. Of special interest is the last tab, labeled <strong>Source.</strong> Clicking on this will show the query that defines the view (very handy!)</p>
+</li>
+<li><p>Below the VIEW entry, you will see one labeled PROCEDURE. Double clicking on this will show you the six Stored Procedures in the “sakila” database. Clicking on the name of any of them will provide information to the right on them. As with the VIEW section, you can see the source code for the Stored Procedure.</p>
+</li>
+<li><p>Finally, below PROCEDURE, you will see an option labeled UDT for User Defined Types. If there are any UDTs defined in your database, they will display here. (Sakila has none).</p>
+</li>
+<li><p>That’s the Objects side of the display!</p>
+<a id="more"></a>
+<h5 id="SQL-Display"><a href="#SQL-Display" class="headerlink" title="SQL Display"></a>SQL Display</h5></li>
+</ol>
+<p>In the first part of this article we walked through the OBJECTS side of Squirrel. The other tab (or button) available at the top of the MySQL window in the SQUirreL CLient is the <strong>SQL</strong> one.</p>
+<ol>
+<li>Click on the <strong>SQL</strong> button or tab now. Compared to the <strong>Objects</strong> area, the work area here is spartan!</li>
+<li>There are a row of icons across the top with tool tips. They are broken down into functional areas, such as dealing with the underlying database, file manipulation, query shortcuts, and result handling. Below that is a drop down list, that will be empty if this is the first time you’ve used SQuirreL SQL Client. This is the Query History drop down. Queries you enter into the builder window below it will be cached and when you exit SQuirreL they get written to a file for retrieval the the next time you start the client.<img src="http://edpflager.com/wp-content/uploads/2015/06/QueryWindowpng-1024x563.png" alt="QueryWindow,png"></li>
+<li>To the right of the history drop down is a down arrow to copy the selected query to the query editor. Obviously if nothing has been entered, there is nothing to copy at this point! Next to that is the Open SQL History button, which will open a Window where you can search for a specific query if you have a lot of history. <strong>You should note there is currently no option to delete your query history within the application. In order to remove history, delete the sql-history.xml file from the home/.squirrel-sql folder. It will be recreated the next time you close SQuirreL SQL Client.</strong></li>
+<li>Positioned next (a bit awkwardly) is a checkbox. This applies to the Limit Rows drop down list. If you have <strong>Limit Rows</strong> selected, and the box checked, your query return at most the number of records specified in the field to  the right of the <strong>Limit Rows</strong> button. So as an example, if you are querying a table with 10,000 records, and have limit rows set to 100, it will only return 100 rows of data.</li>
+<li>The <strong>Limit Rows</strong> drop down list has a second option: <strong>Read On, Block Size.</strong> With this option selected, the client will read a set of records in the number specified, and will pull in the next set of records when you scroll through the results. Lets try an example. Set the drop down to <strong>Read On, Block Size</strong>. and enter 30 in the text box. In the query window, enter this query: <strong>SELECT * FROM actor;</strong> and then click the button that looks like a runner to execute the query (Circled in red in the screen capture below).<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/06/ReadOn.png"><img src="http://edpflager.com/wp-content/uploads/2015/06/ReadOn-1024x630.png" alt="ReadOn"></a></li>
+<li>The result set of 30 records will appear at the bottom of the window, and a message will show in the middle that the results are limited to 30 records. Scroll through the results past the 30th record, and the next 30 will appear. Neat!</li>
+<li>Along with the results, you also have several other tabs that appear as well:<ul>
+<li>MetaData - shows information about each of the fields returned (data type, scale. precision, nullable, etc).</li>
+<li>Info - displays the query along with the elapsed time to execute it.</li>
+<li>Overview/Charts shows information on how the records are statistically distributed. Hover your mouse over each block and it will provide a tooltip with the information. You can change the number of groups the data is sliced into by changing the value in the Max Intervals drop down list. Click the Chart button to see several options for visualizing the distribution of the data, and click the Open Chart Window button once you have defined your visualization.<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/06/overview.png"><img src="http://edpflager.com/wp-content/uploads/2015/06/overview-1024x329.png" alt="overview"></a></li>
+<li>Rotated table is the last option, and it shows a cross tab like view of your data with each column being one record. If you have a scroll wheel on your mouse, you can use that to scroll through the records, otherwise just use  the slider on the screen.</li>
+</ul>
+</li>
+</ol>
+<p>That’s my brief tour of the SQuirreL SQL Client tool! If you need to connect to multiple database platforms, or the database platform doesn’t provide a query tool for your operating system, be sure to give it a try. I will say that I have been able to connect to MySQL, SQL Server, and DB2 iSeries with this tool. If you have any questions on how to use it, please let me know, and I’ll try to help.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/06/29/squirrel-sql-client-for-accessing-different-databases-part-2/" data-id="ckegh201y00bq3ouebelxfr4w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/07/08/run-services-like-mysql-on-demand-with-ubuntu-15-04/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Run services (like MySQL) on demand with Ubuntu 15.04
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/06/24/review-clean-data-by-megan-squire/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Review: Clean Data by Megan Squire</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

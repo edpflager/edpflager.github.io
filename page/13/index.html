@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="EdPflager.com">
+<meta property="og:url" content="http://edpflager.github.io/page/13/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Ed Pflager">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-services-gui-tool-on-centos" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/12/services-gui-tool-on-centos/" class="article-date">
+  <time datetime="2014-03-12T17:29:22.000Z" itemprop="datePublished">2014-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/12/services-gui-tool-on-centos/">Services GUI tool on CentOS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/03/services.png"><img src="http://edpflager.com/wp-content/uploads/2014/03/services-300x221.png" alt="services"></a>SysAdm purists often look down on people who use a GUI to handle tasks on  their servers, but having worked for several years on Novell Netware at the beginning of my career (shudder), give me a GUI over a command line every time! On my home CentOS servers, I have the GNOME desktop environment loaded, and it makes me a lot more productive, because I don’t have to remember the locations of many scripts, or the various command line switches to run various applications. Recently, I was installing a replacement server for my Hadoop cluster, and I found that the Services GUI option was not present under the System - Administration menu. A little hunting turned up that the system-config-services package wasn’t installed. If this happens to you, here’s a quick way to get it back. Open up a terminal - kidding!!!</p>
+<ol>
+<li>Start the Add/Remove Software application from the Administration menu under System.</li>
+<li>Search for system-config-services and check the two options that should appear. One is the application, the other the documentation.</li>
+<li>Click Apply down in the lower right corner, and authenticate as Root.</li>
+<li>Wait a few second, then check under System - Administration. Service should be back right above Software Update.</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/03/12/services-gui-tool-on-centos/" data-id="ckegh2019009p3oue3davemrx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-disable-selinux-to-install-cloudera" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/09/disable-selinux-to-install-cloudera/" class="article-date">
+  <time datetime="2014-03-09T17:05:48.000Z" itemprop="datePublished">2014-03-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/09/disable-selinux-to-install-cloudera/">Disable SELinux to install Cloudera</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/03/SELinux.png"><img src="http://edpflager.com/wp-content/uploads/2014/03/SELinux-300x186.png" alt="SELinux"></a>One of the gotcha’s I’ve encountered when installing Cloudera on CentOS Linux (and I’m assuming it holds true for RHEL), is the presence of SELinux. SELinux is a kernel module that supports some very strong access control security measures. While disabling this module won’t make your system completely vulnerable to outside hacking of your systems, it does make it easier. If you are planning on using your Hadoop system exposed to the Internet in any way, you probably do not want to do what I am going to show you here. Or if you do, reenable SELinux once you are finished. Use at your own risk. To disable SELinux, open a terminal prompt and switch to Super User mode. Then in your favorite editor, open the file /etc/sysconfig/selinux. The file itself is very small, and you only need to make one change. About halfway down you will see a line like this: SELINUX=enforcing Change the word “enforcing” to “disabled”, and save the file. Restart your box, and SELINUX will be disabled, and you can install Cloudera.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/03/09/disable-selinux-to-install-cloudera/" data-id="ckegh1zy6001x3ouegbh892gq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-getting-started-with-kettles-insertupdate-function" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/27/getting-started-with-kettles-insertupdate-function/" class="article-date">
+  <time datetime="2014-02-27T16:36:15.000Z" itemprop="datePublished">2014-02-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/27/getting-started-with-kettles-insertupdate-function/">Getting started with Kettle&#39;s Insert/Update function</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/02/MySQL.jpg"><img src="http://edpflager.com/wp-content/uploads/2014/02/MySQL-300x133.jpg" alt="MySQL"></a>When using an ETL tool, you often create a workflow that will run multiple times, picking up new and changed records. Getting just those changes is pretty easy using Kettle’s Insert/Update tool. (BTW - Kettle is one component in the Pentaho Data Integration application - PDI for short).</p>
+<h3 id="Assumptions-and-requirements"><a href="#Assumptions-and-requirements" class="headerlink" title="Assumptions and requirements"></a><strong>Assumptions and requirements</strong></h3><p>For this tutorial, I am assuming you have access to a MySQL (or MariaDB) database server. We’ll be creating a a sample database based on one originally created by <a target="_blank" rel="noopener" href="https://launchpad.net/test-db/">Fusheng Wang and Carlo Zaniolo</a> at Siemens Corporate Research. For our purposes we only need one table with a small amount of data. Copy the script below and save it as a  SQL file on your system. Run it in MySQL to create the database and populate the table (Yes Production is spelling incorrectly).</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/27/getting-started-with-kettles-insertupdate-function/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/02/27/getting-started-with-kettles-insertupdate-function/" data-id="ckegh1zyp003c3oueagzsgl1v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hadoop-whats-the-point" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/17/hadoop-whats-the-point/" class="article-date">
+  <time datetime="2014-02-17T09:14:11.000Z" itemprop="datePublished">2014-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/17/hadoop-whats-the-point/">Hadoop - What&#39;s the point?</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/02/planes.jpg"><img src="http://edpflager.com/wp-content/uploads/2014/02/planes-300x110.jpg" alt="Small vs Large"></a>Its often said when you work closely with something, you sometimes lose track of the big picture (you can’t see the forest for the trees). But I also find that a lot of times, people who aren’t familiar with something focus too much on the details and miss the big picture. In discussing my Hadoop cluster project with people, they don’t understand the point of it. “Why setup four PCs to work on something. Can’t you just get one really powerful PC and do the work with that?” they ask. <strong>DIVIDE THE WORK</strong> The innovation  that Hadoop provides is in HOW it does the work. For many years, in IT as well as other areas, the solution when faced with bigger and bigger workloads has been to get a bigger, faster, stronger tool. Here are some examples:</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/17/hadoop-whats-the-point/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/02/17/hadoop-whats-the-point/" data-id="ckegh1zyu003s3oue60qv31xh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-big-data-redux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/13/big-data-redux/" class="article-date">
+  <time datetime="2014-02-13T15:30:32.000Z" itemprop="datePublished">2014-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/13/big-data-redux/">Big Data Redux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2013/04/bigdata2.jpg"><img src="http://edpflager.com/wp-content/uploads/2013/04/bigdata2-200x300.jpg" alt="bigdata2"></a>After re-reading my initial post on <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1473" title="What the Heck is BIG DATA?">What is Big Data?</a> I decided a little more clarification was in order. Humans as a people are generating more data now than at any point in our history. Figures thrown out are that 90% of human data has been created in the past few years. I think that may be misleading because a lot of data that is generated isn’t really human created data, but machine generated data. Human data may be a blog post like this one or a book from your local library.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/13/big-data-redux/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/02/13/big-data-redux/" data-id="ckegh1zxf000m3oue7yzo0055" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-adding-thrift-server-to-a-cloudera-hadoop-cluster" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/10/adding-thrift-server-to-a-cloudera-hadoop-cluster/" class="article-date">
+  <time datetime="2014-02-10T16:22:16.000Z" itemprop="datePublished">2014-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/10/adding-thrift-server-to-a-cloudera-hadoop-cluster/">Adding Thrift server to a Cloudera Hadoop Cluster</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/02/thriftserver.jpg"><img src="http://edpflager.com/wp-content/uploads/2014/02/thriftserver.jpg" alt="thriftserver"></a>This is a continuation of my series on setting up a Hadoop Cluster using Cloudera’s distribution. When using the HBASE application, or Impala, you may receive errors about the THRIFT service being unavailable. From what I have found this is because Cloudera doesn’t install the THRIFT service as part of the automated installation.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/10/adding-thrift-server-to-a-cloudera-hadoop-cluster/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/02/10/adding-thrift-server-to-a-cloudera-hadoop-cluster/" data-id="ckegh1zx500053oue9j2q3eus" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-set-up-a-hadoop-cluster-part-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/07/set-up-a-hadoop-cluster-part-5/" class="article-date">
+  <time datetime="2014-02-07T15:15:15.000Z" itemprop="datePublished">2014-02-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/07/set-up-a-hadoop-cluster-part-5/">Set up a Hadoop Cluster – Part 5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/02/ClouderaManager.png"><img src="http://edpflager.com/wp-content/uploads/2014/02/ClouderaManager-300x183.png" alt="ClouderaManager"></a>In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1746" title="Set up a Hadoop Cluster – Part 4">Part 4</a> of this series, I talked about how I installed HortonWorks’ Hadoop distribution on my small test cluster, and how I had some problems with the various services shutting down repeatedly. My initial feelings were that the server with Ambari and Nagios (along with 18 other services) possibly needed more memory, but because the Zotac ZBox I was using would only support 4GB, I was kind of stuck. I could have added more memory to the other boxes in the cluster (which have 2GB each), and reallocated the services, but I wanted to get a vanilla installation up and running reliably before I started tweaking it.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/07/set-up-a-hadoop-cluster-part-5/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/02/07/set-up-a-hadoop-cluster-part-5/" data-id="ckegh201d00a33oueh9c3b12l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-set-up-a-hadoop-cluster-part-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/02/01/set-up-a-hadoop-cluster-part-4/" class="article-date">
+  <time datetime="2014-02-01T12:21:54.000Z" itemprop="datePublished">2014-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/02/01/set-up-a-hadoop-cluster-part-4/">Set up a Hadoop Cluster - Part 4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/02/apache-ambari-project.jpg"><img src="http://edpflager.com/wp-content/uploads/2014/02/apache-ambari-project.jpg" alt="apache-ambari-project"></a>This is part 4 of my series about setting up an inexpensive Hadoop cluster using refurbished desktop PCs as Linux servers. (see here for parts <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1714" title="Set up a Hadoop Cluster – Part 1">1</a>, <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1721" title="Set Up a Hadoop Cluster – Part 2">2</a> and <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1725" title="Set up a Hadoop Cluster – Part 3">3</a>). I installed HortonWorks HDP 2.0. As part of the installation, the main server also installs <a target="_blank" rel="noopener" href="http://ambari.apache.org/">Ambari</a> - an open source server application that is used to monitor and manage Hadoop clusters (hence my reason for adding a fourth server with more memory than the other three) and Nagios - a server monitoring application.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/02/01/set-up-a-hadoop-cluster-part-4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/02/01/set-up-a-hadoop-cluster-part-4/" data-id="ckegh201c00a03oue2zcyfzi4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-set-up-a-hadoop-cluster-part-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/28/set-up-a-hadoop-cluster-part-3/" class="article-date">
+  <time datetime="2014-01-28T09:23:24.000Z" itemprop="datePublished">2014-01-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/28/set-up-a-hadoop-cluster-part-3/">Set up a Hadoop Cluster - Part 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/01/services.png"><img src="http://edpflager.com/wp-content/uploads/2014/01/services-300x160.png" alt="services"></a><a target="_blank" rel="noopener" href="http://edpflager.com/?p=1721" title="Set Up a Hadoop Cluster – Part 2">Third part of this series</a>, and we haven’t even gotten to installing Hadoop yet! This is a quick one though. One of the things you need to make Hadoop work is to be able to use SSH across all of the servers in your cluster. To enable it, log into each box, and go to System in the menu, Administration from the menu and over to Services. Click on it.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/01/28/set-up-a-hadoop-cluster-part-3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/01/28/set-up-a-hadoop-cluster-part-3/" data-id="ckegh201b009w3ouehetv8b3h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-set-up-a-hadoop-cluster-part-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/01/25/set-up-a-hadoop-cluster-part-2/" class="article-date">
+  <time datetime="2014-01-25T09:40:49.000Z" itemprop="datePublished">2014-01-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/25/set-up-a-hadoop-cluster-part-2/">Set Up a Hadoop Cluster - Part 2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/01/StaticIP.png"><img src="http://edpflager.com/wp-content/uploads/2014/01/StaticIP-237x300.png" alt="StaticIP"></a>In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1714" title="Set up a Hadoop Cluster – Part 1">part 1 of this series</a>, I talked about starting a project to set up a cluster of inexpensive refurbished PCs (cheap) to act as a test Hadoop cluster, and some of the issues I encountered in getting the operating system installed. With this part, I’ll talk a little bit about configuring these workstations to get them setup for Hadoop. (And I did want to add, I introduced a fourth PC into the mix, to act as the main Hadoop server - a Zotac Zbox PC with 4GB of memory.)</p>
+<h3 id="Static-IPs"><a href="#Static-IPs" class="headerlink" title="Static IPs"></a><strong>Static IPs</strong></h3><p>On all of the PCs, I added a static IP, using the DHCP assigned address. Before you start changing your connection info, I recommend opening a terminal window and entering the “ifconfig” command. This will show you the existing address for your PC, the gateway, the net mask and a lot of other info you probably won’t care about.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/01/25/set-up-a-hadoop-cluster-part-2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/01/25/set-up-a-hadoop-cluster-part-2/" data-id="ckegh201a009t3oue57g65uzf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/12/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

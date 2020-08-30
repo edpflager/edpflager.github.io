@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>ApacheDS (LDAP) - Part 1 | EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="While working on a recent project, I found the software I was researching had the capability to work with an LDAP server. My experience with LDAP has been pretty limited, mainly using Microsoft’s Acti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ApacheDS (LDAP) - Part 1">
+<meta property="og:url" content="http://edpflager.github.io/2015/11/19/install-apacheldap-on-linuxmint-part-1/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:description" content="While working on a recent project, I found the software I was researching had the capability to work with an LDAP server. My experience with LDAP has been pretty limited, mainly using Microsoft’s Acti">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/11/directory-300x274.jpg">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/11/NetworkConnection-300x243.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/11/IPv4-238x300.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2015/11/restartnetwork.png">
+<meta property="article:published_time" content="2015-11-19T15:45:15.000Z">
+<meta property="article:modified_time" content="2020-08-30T02:25:28.144Z">
+<meta property="article:author" content="Ed Pflager">
+<meta property="article:tag" content="cookbook">
+<meta property="article:tag" content="guides">
+<meta property="article:tag" content="How-to">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="SysAdmin">
+<meta property="article:tag" content="install">
+<meta property="article:tag" content="LDAP">
+<meta property="article:tag" content="Mint">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://edpflager.com/wp-content/uploads/2015/11/directory-300x274.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-install-apacheldap-on-linuxmint-part-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/19/install-apacheldap-on-linuxmint-part-1/" class="article-date">
+  <time datetime="2015-11-19T15:45:15.000Z" itemprop="datePublished">2015-11-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ApacheDS (LDAP) - Part 1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/11/directory.jpg"><img src="http://edpflager.com/wp-content/uploads/2015/11/directory-300x274.jpg" alt="directory"></a>While working on a recent project, I found the software I was researching had the capability to work with an LDAP server. My experience with LDAP has been pretty limited, mainly using Microsoft’s Active Directory for work, so I decided to look into open source alternatives. For the uninitiated, LDAP (Lightweight Directory Access Protocol) and an LDAP server provide a centralized database where an individual’s user account and password is stored and then shared between many services on a network. Many other entities on the network (groups, servers, printers, etc) can also be referenced in an LDAP catalog, making discovery and access much easier. When a user logs into a company’s network, they are then able to access other network resources (email, other internal applications, file shares, printers), by using the same user name and password. The network administrator only needs to enter the user’s information in one location, and all security settings are defined in that location as well. There are a number of Open Source implementations of LDAP, including OpenLDAP, OpenDS/DJ, and ApacheDS.  OpenLDAP is a well documented project, and has been around for a number of years. OpenDS is owned by Sun MIcroSystems and is no longer maintained and was forked to the OpenDJ project.  After researching, I decided for my purposes that the ApacheDS server would best meet my needs, so this article will walk through installing and getting ApacheDS started on a Linux Mint box. This first section should work OK on any Ubuntu/Debian based distribution, and most of this series will work fine on any distribution. YMMV</p>
+<a id="more"></a>
+<p>SET YOUR HOSTNAME</p>
+<ol>
+<li><p>As a first step, make sure your Linux Mint box is up to date. From a command prompt, run the below command:</p>
+<p>sudo apt-get update</p>
+</li>
+<li><p>Check your hostname, and rename your box as appropriate. To check your current hostname, enter:</p>
+<p>hostname</p>
+</li>
+<li><p>To edit the host name, edit the <strong>/etc/hostname</strong> file as root. If you have a local domain for your network, be sure to include it as part of the host name. For example, if your domain is test.com, you might make the host name: **ldap.test.com. ** Open nano to edit the file with this command:</p>
+<p>sudo nano /etc/hostname</p>
+<p>Save the file and close it when you are complete.</p>
+</li>
+</ol>
+<p>SET A STATIC IP ADDRESS</p>
+<ol>
+<li><p> You now need to add a static IP address to your LDAP system. If your network administrator has provided one for you, use it. Otherwise to get the existing address for your PC, the gateway, the net mask and a lot of other info in the  terminal window, enter the command:</p>
+<p><strong>ifconfig</strong></p>
+</li>
+<li><p>From the Mint menu, access the Network Connections application, under Preferences. In the network connections window, click on Wired Connection 1, and then click the EDIT button on the right.<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/11/NetworkConnection.png"><img src="http://edpflager.com/wp-content/uploads/2015/11/NetworkConnection-300x243.png" alt="NetworkConnection"></a></p>
+</li>
+<li><p>A new window will appear with several tabs. Click on the one for IPv4. If the Method here is not set to MANUAL, click  the drop down list and select that option.<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/11/IPv4.png"><img src="http://edpflager.com/wp-content/uploads/2015/11/IPv4-238x300.png" alt="IPv4"></a></p>
+</li>
+<li><p>Click the NEW button on the right, and enter your IP information. Here is where you will enter the IP address, Net Mask and Gateway information provided either by your network administrator, or from the <strong>ifconfig</strong> command from step 1. <strong>Keep in mind that if you use the already assigned DHCP address, you may encounter issues on your home network if that address is given out to another device by your router or DHCP server. Be sure to exclude it from the range of addresses that are handed out.</strong></p>
+</li>
+<li><p>Enter at least one DNS server (generally the first one will be the address of your gateway). You can also use Google’s public DNS servers, by adding in <strong>8.8.8.8</strong> and/or <strong>8.8.4.4.</strong> Separate multiple server addresses by using a comma.</p>
+</li>
+<li><p>Click over to the IPv6 tab. For our purposes, we don’t need to set a static address here, so set the Method drop down to IGNORE. Click the SAVE button to the Network Connection window and then click CLOSE in that window.</p>
+</li>
+<li><p>At this point, you should turn networking off and on using the network icon on your screen to ensure the new settings have taken effect. Click the icon once to bring up a control window. Toggle the switch at the top of the window to the O setting to turn it off (you should get an onscreen notification that you are disconnected). Toggle the switch back to the <strong>-</strong> setting to reconnect. (you should get another onscreen notification that you are connected).<a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/11/restartnetwork.png"><img src="http://edpflager.com/wp-content/uploads/2015/11/restartnetwork.png" alt="restartnetwork"></a></p>
+</li>
+<li><p>Finally, open a terminal prompt, and attempt to PING a website to make sure everything is working OK. Enter the command:</p>
+<p>ping <a target="_blank" rel="noopener" href="http://www.linuxmint.com/">www.linuxmint.com</a></p>
+<p>(or some other website) and hit ENTER. You should receive a number of reply messages that  64 bytes were received from the website in a certain amount of time. Hit CTRL-C to quit the PING application.</p>
+</li>
+</ol>
+<p>EDIT THE LOCAL HOST FILE</p>
+<ol>
+<li><p>The next step is to configure the local  HOST file to show the new server name and IP address for your Mint PC. The <strong>hosts file</strong> is used by the operating system to map host names to IP addresses.</p>
+</li>
+<li><p>Open a terminal prompt again, and enter this command:</p>
+<p> sudo nano /etc/hosts</p>
+</li>
+<li><p>The nano text editor will open and display the contents of your HOSTS file. It should look something like this:</p>
+<p>127.0.0.1    localhost<br>127.0.1.1    originalname</p>
+</li>
+<li><p>Change the second line to have your static IP address, the new Host Name you set previously, and the full host name with domain. After editing, it should look like:</p>
+<p>127.0.0.1         localhost<br>10.0.1.22         <strong>ldap       ldap.test.com</strong></p>
+</li>
+<li><p>Restart (just in case).</p>
+</li>
+</ol>
+<p>CHECK YOUR JAVA VERSION</p>
+<ol>
+<li><p>Open a terminal prompt and enter the command:</p>
+<p>java -version</p>
+<p>to see if JAVA is installed. By default,  OpenJDK is installed, or you can replace it with the official version of JAVA from Oracle. If you prefer the Oracle version, the Linux Mint website has a good installation <a target="_blank" rel="noopener" href="http://community.linuxmint.com/tutorial/view/1091">how to</a>.</p>
+</li>
+</ol>
+<p>FINALLY, INSTALLING APACHE DS</p>
+<ol>
+<li><p>Download the latest version of ApacheDS from the <a target="_blank" rel="noopener" href="http://directory.apache.org/apacheds/download/download-linux-deb.html">app website</a> (either 64-bit or 32-bit depending on your system’s architecture).</p>
+</li>
+<li><p>Open a Terminal and navigate to where you downloaded the DEB package  and run:</p>
+<p> sudo dpkg -i apacheds-2.0.0-M20-amd64.deb (substitute the version number you downloaded)</p>
+</li>
+<li><p>After supplying your SUDO password, the software will install very quickly and you will see a message that the reconfigured ureadahead will take effect after the next reboot.</p>
+</li>
+<li><p>Before you reboot, set the LDAP service to start automatically when you boot the system. Open a terminal prompt, and execute the following commands:</p>
+<p>$ cd /etc/init.d<br>$ sudo update-rc.d apacheds-2.0.0-M20-default defaults</p>
+</li>
+<li><p>You’ll see several lines of output indicating that ApacheDS has been added to various runlevels on your system.  Go ahead and reboot now.</p>
+</li>
+<li><p>That’s it! ApacheDS should now be up and running on your system.</p>
+</li>
+</ol>
+<p>In Part 2, I’ll cover installing the ApacheDS Studio and configuring it to connect to your LDAP catalog, as well as entering your first entity in the catalog.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/11/19/install-apacheldap-on-linuxmint-part-1/" data-id="ckegh1zz7004g3oue2ckr13i5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/23/apacheds-ldap-on-linux-mint-part-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ApacheDS (LDAP) - Part 2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/11/remove-evaluator-login-from-pentaho-bi-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Remove evaluator login from Pentaho BI server</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

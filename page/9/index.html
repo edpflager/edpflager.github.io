@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="EdPflager.com">
+<meta property="og:url" content="http://edpflager.github.io/page/9/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Ed Pflager">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-using-mariadb-jdbc-with-pentaho-kettle-pdi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/02/14/using-mariadb-jdbc-with-pentaho-kettle-pdi/" class="article-date">
+  <time datetime="2015-02-14T19:14:53.000Z" itemprop="datePublished">2015-02-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/14/using-mariadb-jdbc-with-pentaho-kettle-pdi/">Using MariaDB JDBC with Pentaho Kettle (PDI)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/02/Mariadb-seal-shaded-browntext-alt.png"><img src="http://edpflager.com/wp-content/uploads/2015/02/Mariadb-seal-shaded-browntext-alt.png" alt="Mariadb-seal-shaded-browntext-alt"></a>A few weeks ago I got an email from reader Zachary Nielsen asking some questions about using the MariaDB JDBC driver with Pentaho Data Integration (aka PDI or Kettle). He had gotten it working as a JDNI option in PDI but wanted to have MariaDB listed as a database option in the database connection window. I looked into a bit, since I had not worked with the MariaDB JDBC connector, and here is what I found. For those unfamiliar with <a target="_blank" rel="noopener" href="http://www.mariadb.org/">MariaDB</a>, its a fork of MySQL by the original developers of MySQL who had concerns over the acquisition of MySQL by Oracle. MariaDB can be used as a drop-in replacement for MySQL, and works using the MySQL syntax, ports and tools (MySQL Workbench and MySQL JDBC drivers), but additional functionality is also available if you like. The MariaDB team also released a JDBC driver to work in place of the MySQL one that appears to process faster (although the benchmarks are almost two years old - you mileage may vary). In this part of the series, I’ll walk through setting up Pentaho DI to use the MariaDB JDBC driver. I’m still working on implementing the driver on a Pentaho ETL server so that part of the series will come later.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/02/14/using-mariadb-jdbc-with-pentaho-kettle-pdi/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/02/14/using-mariadb-jdbc-with-pentaho-kettle-pdi/" data-id="ckegh202e00cw3ouedvj4amcx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos-show-details-during-boot" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/09/centos-show-details-during-boot/" class="article-date">
+  <time datetime="2015-01-09T19:02:51.000Z" itemprop="datePublished">2015-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/09/centos-show-details-during-boot/">Centos - Show details during boot</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/01/startup.png"><img src="http://edpflager.com/wp-content/uploads/2015/01/startup-300x167.png" alt="startup"></a>By default CentOS 6 shows an animation while the system boots up, indicating its progress with either a rotating ring or a progress bar (in my experience physical machine installs show the rings, and VM installs show the progress bar). However, if you are from a sysadmin background or are responsible for monitoring one or more CentOS boxes, you may want to see what’s happening while the system comes up, rather than a simple animation.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/01/09/centos-show-details-during-boot/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/01/09/centos-show-details-during-boot/" data-id="ckegh1zxi000r3ouea2ro16cf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-connecting-kettle-to-hadoop-hive" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/05/connecting-kettle-to-hadoop-hive/" class="article-date">
+  <time datetime="2014-12-05T18:44:35.000Z" itemprop="datePublished">2014-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/05/connecting-kettle-to-hadoop-hive/">Connecting Kettle to Cloudera Hadoop Impala</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/12/hadoop-elephant.png"><img src="http://edpflager.com/wp-content/uploads/2014/12/hadoop-elephant-300x214.png" alt="hadoop-elephant"></a>As Big Data platforms like Hadoop and its ecosystem of related applications has matured, they have moved beyond the original key-value model to embrace data processing of more traditional structured data. But a big problem for DBAs and Data Analysts wanting to use the power of these new platforms to analyze data from RDBMS systems like MySQL, SQL Server, is getting data moved between them. Using CSV or flat files is one way, but it adds additional processing. Data has to be extracted from the source system to an intermediary format and then imported into the destination. Its far more efficient and less prone to error if the data can be passed without that middle step. In this first article of a series where I’ll be looking at interactivity between Hadoop and other database systems, I’ll cover setting up a database connection to Hadoop via Cloudera’s Impala JDBC driver to Pentaho’s Kettle ETL system.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/12/05/connecting-kettle-to-hadoop-hive/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/12/05/connecting-kettle-to-hadoop-hive/" data-id="ckegh1zxr00153ouebu9gg8c0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-install-mysql-workbench-6-2-on-centos" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/28/install-mysql-workbench-6-2-on-centos/" class="article-date">
+  <time datetime="2014-11-28T19:12:11.000Z" itemprop="datePublished">2014-11-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/28/install-mysql-workbench-6-2-on-centos/">Install MySQL Workbench 6.2 on Centos</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/11/workbench.png"><img src="http://edpflager.com/wp-content/uploads/2014/11/workbench-300x102.png" alt="workbench"></a>The world of computers is constantly evolving, and that means having to upgrade your software periodically if you want to stay current. The GA version of MySQL Workbench, the GUI tool for interacting with the MySQL database engine was recently updated. For information on changes, you can check out the official documentation at this <a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/workbench/">link</a>, but a couple of the biggest changes revolve around Microsoft products:</p>
+<ul>
+<li>you can now migrate Microsoft Access databases, and</li>
+<li>64-bit Windows binaries are now provided to go along with the 32-bit ones.</li>
+</ul>
+<p>I use MySQL as a test bed for a lot of Pentaho development, so I like to keep the related tools up to date. Although this version does work with Centos 6.6 (the version I am using of the RHEL  distribution), its not as easy as it should be to install.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/11/28/install-mysql-workbench-6-2-on-centos/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/11/28/install-mysql-workbench-6-2-on-centos/" data-id="ckegh1zzb004o3oue1x78h0pi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pentaho-data-extracts-with-lookups" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/15/pentaho-data-extracts-with-lookups/" class="article-date">
+  <time datetime="2014-11-15T19:34:48.000Z" itemprop="datePublished">2014-11-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/15/pentaho-data-extracts-with-lookups/">Pentaho - Using Database Lookups</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/11/Kettle1.png"><img src="http://edpflager.com/wp-content/uploads/2014/11/Kettle1-300x72.png" alt="Kettle"></a>At my previous day job, we were often tasked with producing data extracts for distribution to outside companies who sold our products. To accomplish this we used a well known reporting platform to produce either Excel or CSV format files. While it worked, it was like using a hammer to drive in a screw. Its just not the best way to accomplish your goal. So during a rare period of calm, I dissected a couple of our extract reports and attempted to convert them to Pentaho Data Integration (aka Kettle). Because we were pulling data from multiple sources and combining it into one unified output file,  the extracts were made up of several queries gathering data from multiple sources. The first query would pull the bulk of the data, and then specific fields from those results were used as filters to pull additional fields from tables in other data sources.  This concept can be used in Pentaho as well, making it unnecessary to temporarily store the data from the first extract and join it later with data from subsequent extracts. An additional benefit is that processing in this manner tends to be much quicker. This type of processing can also be used for denormalizing data when building a data warehouse and in many other scenarios when working with ETL processes.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/11/15/pentaho-data-extracts-with-lookups/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/11/15/pentaho-data-extracts-with-lookups/" data-id="ckegh200700733oue5xbb2466" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-the-vagaries-of-software-updates" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/04/the-vagaries-of-software-updates/" class="article-date">
+  <time datetime="2014-11-04T17:03:36.000Z" itemprop="datePublished">2014-11-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/11/04/the-vagaries-of-software-updates/">The Vagaries of Software Updates</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://edpflager.com/wp-content/uploads/2014/11/crash-224x300.jpg" alt="crash">A short explanation for why the site has been quiet for a couple of weeks: In my last post I referenced updating to OS X Yosemite. While the operating system has been performing fairly well, one installed software package has not. For the most part, I use virtual machines to develop and test different things like Hadoop, SQL Server, Pentaho and various other items. This allows me to try out multiple packages and operating systems without the expense of a lot of physical boxes. For the host software, I have been using Fusion, the workstation software from VMWare that allows you to run multiple virtual systems on a Mac. The last time I upgraded my Mac’s OS (less than a year ago to Mavericks), I had to fork over $45 to upgrade Fusion to overcome some issues with the new OS.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/11/04/the-vagaries-of-software-updates/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/11/04/the-vagaries-of-software-updates/" data-id="ckegh202200bx3oueblqc8m3d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/16/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-4/" class="article-date">
+  <time datetime="2014-10-16T18:16:50.000Z" itemprop="datePublished">2014-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/16/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-4/">Setup a Single-node Hadoop Yarn machine using CDH5 – Part 4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/hue_logo_300dpi_huge.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/hue_logo_300dpi_huge-300x75.png" alt="hue_logo_300dpi_huge"></a>This is part 4 of a series about setting up a single-node Hadoop Yarn system for sandbox use. Part 1 was <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2475" title="Setup a Single-node Hadoop Yarn machine using CDH5 – Part 1">here</a>, part 2 <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2490" title="Setup a Single-node Hadoop Yarn machine using CDH5 – Part 2">here</a>, and part 3 <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2511" title="Setup a Single-node Hadoop Yarn machine using CDH5 – Part 3">here</a>. I have another series for using MapReduceV1, which is <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">here</a>. I’m hoping to keep this series in a similar order as the original set of articles, and will deviate only when necessary. All the content here is based on the <a target="_blank" rel="noopener" href="http://www.cloudera.com/">Cloudera</a> documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster and added additional content where necessary. Please be careful when copying lines from these articles to paste into Hadoop config files or a terminal window. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components. Before starting, make sure that Python 2.6 or 2.7 is installed on the server. This is easy to accomplish, by opening a terminal window, and from the command line, enter: <strong>python</strong> If Python is installed, it will load up and display the version of the software. On my test PC, it responded with Python 2.6.6. Return to the command line by entering at the Python prompt:  <strong>quit()</strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2014/10/16/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/10/16/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-4/" data-id="ckegh201r00b93oue9adv8pw5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/10/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-3/" class="article-date">
+  <time datetime="2014-10-10T18:03:06.000Z" itemprop="datePublished">2014-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/10/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-3/">Setup a Single-node Hadoop Yarn machine using CDH5 – Part 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is part 3 of a series about setting up a single-node Hadoop Yarn system for sandbox use. Part 1 was <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2475" title="Setup a Single-node Hadoop Yarn machine using CDH5 – Part 1">here</a>, and part 2 <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2490" title="Setup a Single-node Hadoop Yarn machine using CDH5 – Part 2">here</a>. I have another series for using MapReduceV1, which is <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">here</a>. I’m hoping to keep this series in a similar order as the original set of articles, and will deviate only when necessary. All the content here is based on the <a target="_blank" rel="noopener" href="http://www.cloudera.com/">Cloudera</a> documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster and added additional content where necessary. Please be careful when copying lines from these articles to paste into Hadoop config files or a terminal window. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components. This entry is fairly short, but next time I’ll delve into installing HUE.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/10/10/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/10/10/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-3/" data-id="ckegh201q00b63oue0q0sa34j" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/08/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-2/" class="article-date">
+  <time datetime="2014-10-08T14:08:26.000Z" itemprop="datePublished">2014-10-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/08/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-2/">Setup a Single-node Hadoop Yarn machine using CDH5 - Part 2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/hbase_zoo.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/hbase_zoo-300x170.png" alt="hbase_zoo"></a>This is part 2 of setting up a single-node Hadoop Yarn system for sandbox use. Part 1 was <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2475" title="Setup a Single-node Hadoop Yarn machine using CDH5 – Part 1">here</a>, or for the series for using MapReduceV1, go here. I’m hoping to keep this series in a similar order as the original set of articles, and will deviate only when necessary. All the content here is based on the <a target="_blank" rel="noopener" href="http://www.cloudera.com/">Cloudera</a> documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster and added additional content where necessary. Please be careful when copying lines from these articles to paste into Hadoop config files or a terminal window. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+<h5 id="Install-HBase"><a href="#Install-HBase" class="headerlink" title="Install HBase"></a>Install HBase</h5>
+        
+          <p class="article-more-link">
+            <a href="/2014/10/08/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/10/08/setup-a-single-node-hadoop-yarn-machine-using-cdh5-part-2/" data-id="ckegh201p00b23oueab6he8xn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-yarn-machine-using-cdh5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/05/setup-a-single-node-hadoop-yarn-machine-using-cdh5/" class="article-date">
+  <time datetime="2014-10-05T15:44:11.000Z" itemprop="datePublished">2014-10-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/10/05/setup-a-single-node-hadoop-yarn-machine-using-cdh5/">Setup a Single-node Hadoop Yarn machine using CDH5 - Part 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/10/yarn.jpg"><img src="http://edpflager.com/wp-content/uploads/2014/10/yarn-300x195.jpg" alt="Balls of yarn"></a>Previously I posted a series of articles that walked through installing a single-node Hadoop machine using <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">version 1 of MapReduce</a>. Since that  series went live, a good deal of development has moved on to MRv2 aka YARN. I won’t go into the intricacies of the new architecture, suffice to say that it aims to be more efficient than the older MRv1. This article and any following it are based on the web documentation from Cloudera. While their information is very thorough, it often jumps around making it difficult for someone new to Hadoop to follow. Hopefully the instructions I will be providing here will make it easier for others to setup as well. Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components. Some may ask, “What’s the point?” Cloudera, Hortonworks and other vendors offer Sandbox VM’s of their distribution that you can download and play with so why install it yourself? My answer to that is, by installing it myself, I can learn more about how it all fits together, and gives me a better understanding of the whole Hadoop ecosystem. WARNING: This is not meant to be a production system, and I provide no warranties as to the usability of the system once you are complete. If you are setting up a production system and/or one that will exposed outside your firewall, please make sure you enable adequate security measures!</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/10/05/setup-a-single-node-hadoop-yarn-machine-using-cdh5/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/10/05/setup-a-single-node-hadoop-yarn-machine-using-cdh5/" data-id="ckegh201s00bc3oue44tg7g7b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

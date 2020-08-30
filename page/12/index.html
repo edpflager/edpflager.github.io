@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="EdPflager.com">
+<meta property="og:url" content="http://edpflager.github.io/page/12/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Ed Pflager">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/05/02/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-7/" class="article-date">
+  <time datetime="2014-05-02T15:51:55.000Z" itemprop="datePublished">2014-05-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/05/02/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-7/">Setup a Single-node Hadoop machine using CDH5 and HUE – Part 7</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/05/nospark.png"><img src="http://edpflager.com/wp-content/uploads/2014/05/nospark.png" alt="nospark"></a>This is part 7 (the last part) in my series on setting up a Hadoop single node, pseudo-cluster using Cloudera’s CDH distribution. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">part 1</a>, I walked through the beginning steps to configure a CentOS 6.5 system for use as a single-node Hadoop pseudo-cluster. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1964" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 2">part 2</a>, I walked through installing and configuring HBase, Zookeeper and Snappy. <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1973" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 3">Part 3</a> covered installing HUE – the graphical front end from Cloudera that makes interacting with the various components in our cluster easier.  <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1985" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 4">Part 4</a> as about the set up of  Oozie – a job scheduler component for Hadoop, and how to fix a minor problem with the Hue setup involving a secret key. Installing and configuring Hive2 and getting it to work with Cloudera’s HUE web interface was covered in <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2003" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 5">Part 5</a>. And last time in Part 6, I went through the steps necessary to integrate two tools for working with structured SQL data in a Hadoop pseudo-cluster environment: Impala - Cloudera’s query tool for Hadoop, and Sqoop2 - an ETL tool to move data between relational database systems and Hadoop. With this article, we’ll wrap up the series by looking at Apache Spark. Its a general purpose engine for running applications in a Hadoop environment and achieves speeds considerably faster than using native MapReduce. And my little disclaimer: this series is based on the Cloudera documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster. Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/05/02/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-7/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/05/02/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-7/" data-id="ckegh201o00az3oue07bghuxy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/28/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-6/" class="article-date">
+  <time datetime="2014-04-28T15:35:14.000Z" itemprop="datePublished">2014-04-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/28/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-6/">Setup a Single-node Hadoop machine using CDH5 and HUE – Part 6</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/Impala-Sqoop.jpg"><img src="http://edpflager.com/wp-content/uploads/2014/04/Impala-Sqoop.jpg" alt="Männliche Impala in der Serengeti"></a>This is part 6 in my series on setting up a Hadoop single node, pseudo-cluster using Cloudera’s CDH distribution. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">part 1</a>, I walked through the beginning steps to configure a CentOS 6.5 system for use as a single-node Hadoop pseudo-cluster. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1964" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 2">part 2</a>, I walked through installing and configuring HBase, Zookeeper and Snappy. <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1973" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 3">Part 3</a> covered installing HUE – the graphical front end from Cloudera that makes interacting with the various components in our cluster easier.  <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1985" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 4">Part 4</a> as about the set up of  Oozie – a job scheduler component for Hadoop, and how to fix a minor problem with the Hue setup involving a secret key. Last time, in <a target="_blank" rel="noopener" href="http://edpflager.com/?p=2003" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 5">Part 5</a>,  installing and configuring Hive2 and getting it to work with Cloudera’s HUE web interface was covered.</p>
+<p>In this article, I’ll show the steps necessary to integrate two tools for working with structured SQL data in a Hadoop pseudo-cluster environment: Impala - Cloudera’s query tool for Hadoop, and Sqoop2 - an ETL tool to move data between relational database systems and Hadoop. This series is based on the Cloudera documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster.</p>
+<p>Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/28/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-6/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/28/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-6/" data-id="ckegh201n00av3oue6vld2ob8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/impala/" rel="tag">impala</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/25/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-5/" class="article-date">
+  <time datetime="2014-04-25T15:28:11.000Z" itemprop="datePublished">2014-04-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/25/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-5/">Setup a Single-node Hadoop machine using CDH5 and HUE – Part 5</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/hivemysql.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/hivemysql.png" alt="hivemysql"></a>This is part 5 in my series on setting up our a Hadoop single node, pseudo-cluster using Cloudera’s CDH distribution. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">part 1</a>, I walked through the beginning steps to configure a CentOS 6.5 system for use as a single-node Hadoop pseudo-cluster. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1964" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 2">part 2</a>, I walked through installing and configuring HBase, Zookeeper and Snappy. <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1973" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 3">Part 3</a> covered installing HUE – the graphical front end from Cloudera that makes interacting with the various components in our cluster easier. Last time in <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1985" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 4">Part 4</a>, I walked through the set up of  Oozie – a job scheduler component for Hadoop, and how to fix a minor problem with the Hue setup involving a secret key.</p>
+<p>In this article, I’ll walk through installing and configuring Hive2 and getting it to work with Cloudera’s HUE web interface. This series is based on the Cloudera documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster.</p>
+<p>Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/25/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-5/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/25/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-5/" data-id="ckegh201m00as3ouefh5j7fjw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/21/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-4/" class="article-date">
+  <time datetime="2014-04-21T15:43:43.000Z" itemprop="datePublished">2014-04-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/21/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-4/">Setup a Single-node Hadoop machine using CDH5 and HUE – Part 4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/oozie-derby.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/oozie-derby.png" alt="oozie-derby"></a>This is part 4 of my series on how to setup a Hadoop single node, pseudo-cluster using Cloudera’s CDH distribution. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">part 1</a>, I walked through the beginning steps to configure a CentOS 6.5 system for use as a single-node Hadoop pseudo-cluster. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1964" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 2">part 2</a>, I walked through installing and configuring HBase, Zookeeper and Snappy. <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1973" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 3">Part 3</a> covered installing HUE - the graphical front end from Cloudera that makes interacting with the various components in our cluster easier.  In this installment, we’ll set up Oozie - a job scheduler component for Hadoop, and fix a minor problem with the Hue setup. This series is based on the Cloudera documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster. Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/21/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/21/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-4/" data-id="ckegh201l00ao3oue37ef4sbk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/19/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-3/" class="article-date">
+  <time datetime="2014-04-19T13:45:53.000Z" itemprop="datePublished">2014-04-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/19/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-3/">Setup a Single-node Hadoop machine using CDH5 and HUE – Part 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://gethue.com/"><img src="http://edpflager.com/wp-content/uploads/2014/04/hue_logo_300dpi_huge-300x75.png" alt="hue_logo_300dpi_huge"></a>Welcome to part 3 of my series on how to setup a Hadoop single node, pseudo-cluster using Cloudera’s CDH distribution and HUE. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">part 1</a>, I walked through the beginning steps to configure a CentOS 6.5 system for use as a single-node Hadoop pseudo-cluster. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1964" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 2">part 2</a>, I walked through installing and configuring HBase, Zookeeper and Snappy. Below I’ll present the steps necessary to install the web-based management tool HUE for using with your cluster. (Hue is a trademark of Cloudera but is released under the Apache license version 2). This series is based on the Cloudera documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster. Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/19/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/19/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-3/" data-id="ckegh201k00al3oue3ipbb638" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/16/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-2/" class="article-date">
+  <time datetime="2014-04-16T15:12:01.000Z" itemprop="datePublished">2014-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/16/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-2/">Setup a Single-node Hadoop machine using CDH5 and HUE - Part 2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/hbase_zoo.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/hbase_zoo-300x170.png" alt="hbase_zoo"></a>In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=1945" title="Setup a Single-node Hadoop machine using CDH5 and HUE – Part 1">part 1 of this series</a>, I walked through the beginning steps for setting up a single-node Hadoop pseudo-cluster. In that article, I showed you how to configure CentOS 6.5 with the necessary prerequisites for installation, download Cloudera’s Hadoop distribution  (CDH5) and install it. In this article, I’ll explain how to install:</p>
+<ul>
+<li>HBase - an open source non-relational database that runs on top of the Hadoop File System (HDFS)</li>
+<li>Zookeeper - an engine that provides distribution, synchronization and naming services for Hadoop,</li>
+<li>and SNAPPY a fast data compression and decompression library that incorporates with many different components in the Hadoop ecosystem.</li>
+</ul>
+<p>This series is based on the Cloudera documentation, but I’ve modified it to be easier to follow for setting up a pseudo cluster and added additional content where necessary. Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/16/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/16/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-2/" data-id="ckegh201j00ah3oue6vhiexkb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/14/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-1/" class="article-date">
+  <time datetime="2014-04-14T15:15:31.000Z" itemprop="datePublished">2014-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/14/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-1/">Setup a Single-node Hadoop machine using CDH5 and HUE - Part 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/Hadoop.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/Hadoop-300x191.png" alt="Hadoop"></a> I’ve been awaiting the open source introduction of Cloudera’s Hadoop distribution, CDH 5,  to try installing a pseudo-distributed cluster using CDH, with the HUE GUI interface. (If you are not familiar with the terminology, pseudo-distributed mode allows you to run Hadoop on one machine, with the various daemons each running in a separate JVM.) By setting up a pseudo-distributed cluster, I could free up two other machines for other projects I’m working on. Update: Please be careful if you are copying lines from these articles to paste into your Hadoop config files. I have found that the double hyphen characters used in the comment lines may copy over as a long hyphen instead. This is likely to cause issues when attempting to run the various components.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/14/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/14/setup-a-single-node-hadoop-machine-using-cdh5-and-hue-part-1/" data-id="ckegh201i00ae3oue4f3007cb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pdi-kettle-delete-files" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/04/pdi-kettle-delete-files/" class="article-date">
+  <time datetime="2014-04-04T16:06:44.000Z" itemprop="datePublished">2014-04-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/04/04/pdi-kettle-delete-files/">PDI Kettle - Delete File(s)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/04/deletefilejob.png"><img src="http://edpflager.com/wp-content/uploads/2014/04/deletefilejob-300x76.png" alt="deletefilejob"></a>When working on ETL flows, its sometimes useful to store information in temporary files as long as you clean those files up when you are finished. Pentaho Data Integration (aka Kettle or PDI) has two steps for deleting file(s) - one handles a single file, and one handles multiple files. Both are in the File Management section of the Design node in the Job designer.</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/04/04/pdi-kettle-delete-files/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/04/04/pdi-kettle-delete-files/" data-id="ckegh2002006s3ouec87pb6i9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-pentaho-kettle-spoon-damaged-message-on-mac-osx-mavericks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/26/pentaho-kettle-spoon-damaged-message-on-mac-osx-mavericks/" class="article-date">
+  <time datetime="2014-03-26T15:54:02.000Z" itemprop="datePublished">2014-03-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/26/pentaho-kettle-spoon-damaged-message-on-mac-osx-mavericks/">Pentaho Kettle Spoon - Damaged message on Mac OSX Mavericks</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://edpflager.com/wp-content/uploads/2014/03/AppDamaged-300x125.png" alt="AppDamaged">Spoon is the graphical front end for designing ETL workflows for Pentaho Data Integration also known as Kettle. The latest community edition (5.01) was released in November of 2013, with versions for Windows, Linux and Macs. On the first two platforms it works very well as soon as you extract the archive, but unfortunately on Mac OS X 10.9 (Mavericks) there are some issues. It is possible to get it run, but its not easy. I’ll assume that you have Data Integration downloaded, and extracted on your system and Java 1.6 installed.  The instructions from Pentaho say you can run the Data Integration.app to launch Kettle, but on the systems I’ve tried this on, I get an error message that the App is damaged. If you are experiencing this, don’t click “Move to Trash!” There is a couple of ways to get it working. :) The first method is pretty straightforward.</p>
+<ol>
+<li><p>While you are clicking on the Data Integration application, hold down the Control key on your keyboard. A menu will appear and you can then click on Open near the top. You’ll then see an Are You Sure warning window, where you can click Open again. The application will then start. Simple!</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/03/26/pentaho-kettle-spoon-damaged-message-on-mac-osx-mavericks/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/03/26/pentaho-kettle-spoon-damaged-message-on-mac-osx-mavericks/" data-id="ckegh200e007h3oueafpd5cdn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-add-apache-spark-to-cloudera" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/03/20/add-apache-spark-to-cloudera/" class="article-date">
+  <time datetime="2014-03-20T15:32:18.000Z" itemprop="datePublished">2014-03-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/20/add-apache-spark-to-cloudera/">Add Apache Spark to Cloudera</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2014/03/Spark-logo-192x100px.png"><img src="http://edpflager.com/wp-content/uploads/2014/03/Spark-logo-192x100px.png" alt="Spark-logo-192x100px"></a>Just a quick note today. A couple of weeks ago, the <a target="_blank" rel="noopener" href="http://spark.apache.org/">Spark</a> project over at Apache graduated to a top-level project and it can now be integrated into your Cloudera environment very easily! Spark is a Hadoop integrated in-memory data analytic framework that uses HDFS (the Hadoop file system) to run programs 100x faster than MapReduce. Speed when using disk isn’t quite as fast, just a 10x faster claim than HDFS. It supports a number of different programming languages (Python, Java, Scala), can be used with UC Berkeley’s Shark application to see those same speed increases with Hive, and it can read from HBase and Cassandra data sources as well. If you’d like to add Spark to your existing Cloudera cluster, head on over to <a target="_blank" rel="noopener" href="http://www.cloudera.com/content/cloudera-content/cloudera-docs/CM4Ent/latest/Cloudera-Manager-Installation-Guide/cmig_spark_installation_standalone.html">Cloudera’s website</a> for instructions on how to install it.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2014/03/20/add-apache-spark-to-cloudera/" data-id="ckegh1zx300033ouef5sz8q3f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="EdPflager.com">
+<meta property="og:url" content="http://edpflager.github.io/page/6/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Ed Pflager">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-pentaho-fuzzy-match" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/26/pentaho-fuzzy-match/" class="article-date">
+  <time datetime="2016-05-26T15:21:54.000Z" itemprop="datePublished">2016-05-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/26/pentaho-fuzzy-match/">Pentaho Data Integration&#39;s Fuzzy Match</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3311#main"><img src="http://edpflager.com/wp-content/uploads/2016/05/fuzzy.jpg" alt="fuzzy"></a>When cleansing data, one of the biggest challenges is determining if one record is the same as another in the absence of a unique identifier. For example, if your database has a record for Terri Lee Duffy, and you get a new record for Terry Lee Duffy, is it the same person? If you have a government ID number then its possible to tell definitively, that its the same person. But what if you don’t have that to distinguish the record? You could check other related data if you have it, like street address, but what if one record has 100 South Ave and the other is 100 South Road? A human looking could say yes or no that this is the same person. We don’t want to have to check every discrepancy, especially if we are moving millions of rows at a time. In order to automate this process, we can use a component in Pentaho called Fuzzy Match. (For a longer discussion of Fuzzy Matching, <a target="_blank" rel="noopener" href="https://www.melissadata.com/deduplication/what-is-fuzzy-matching.htm">Melissa Data Corporation</a> has a good overview.) While the results of a Fuzzy Match process are not 100% perfect, you can set an allowance threshold so that similarities have to be within a certain range or you can show only the closest match as a result of your Fuzzy Match. Finally, the Fuzzy Match component can use one of several algorithms to determine if one field is a match for another.  The <a target="_blank" rel="noopener" href="http://wiki.pentaho.com/display/EAI/Fuzzy+match">Pentaho Wiki</a> discusses the nuances of these algorithms and has some discussion on the best times to use them.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/26/pentaho-fuzzy-match/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/05/26/pentaho-fuzzy-match/" data-id="ckegh200900763oueg053ap2t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-using-docker-on-demand-with-linux-mint" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/21/using-docker-on-demand-with-linux-mint/" class="article-date">
+  <time datetime="2016-05-21T16:33:12.000Z" itemprop="datePublished">2016-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/21/using-docker-on-demand-with-linux-mint/">Using Docker on demand with Linux Mint</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3290#main"><img src="http://edpflager.com/wp-content/uploads/2016/05/container_shipping-300x177.png" alt="container_shipping"></a>If you are like me and work on multiple things on your development system, you don’t always want everything running when you start your PC. I’ve previously covered starting other services on demand, and this time around I’ll cover running Docker as needed. Docker has essentially two separate components. There is the Docker daemon (or service) that is configured to start when the system is booted up and there is the Docker CLI that you interact with and your commands are passed to the daemon. The CLI only runs when you specifically call it from the terminal prompt with the DOCKER command. For my purposes, I didn’t need or want the daemon running all the time because its a laptop. (If I was using a production system or even a full blown development box, I would prefer to have the daemon always running.) So after installing Docker, I needed to configure it to not start up every time the system starts, and then come up with an easy way to start it as needed.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/05/21/using-docker-on-demand-with-linux-mint/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/05/21/using-docker-on-demand-with-linux-mint/" data-id="ckegh202d00ct3ouedjpl2l9w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-docker-admin-cheat-sheet-part-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/25/docker-admin-cheat-sheet-part-1/" class="article-date">
+  <time datetime="2016-04-25T19:23:51.000Z" itemprop="datePublished">2016-04-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/25/docker-admin-cheat-sheet-part-1/">Docker Admin Cheat Sheet part 1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="Here-is-part-one-of-a-personal-docker-administration-cheat-sheet-I-have-been-putting-together-I-know-there-are-a-number-of-sites-that-provide-similar-tools-but-for-my-own-purposes-its-easier-to-remember-different-commands-when-I-organize-them-myself"><a href="#Here-is-part-one-of-a-personal-docker-administration-cheat-sheet-I-have-been-putting-together-I-know-there-are-a-number-of-sites-that-provide-similar-tools-but-for-my-own-purposes-its-easier-to-remember-different-commands-when-I-organize-them-myself" class="headerlink" title="Here is part one of a personal docker administration cheat sheet I have been putting together. I know there are a number of sites that provide similar tools, but for my own purposes, its easier to remember different commands when I organize them myself."></a><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3275#main"><img src="http://edpflager.com/wp-content/uploads/2016/04/container-lock-300x201.jpg" alt="container-lock"></a>Here is part one of a personal docker administration cheat sheet I have been putting together. I know there are a number of sites that provide similar tools, but for my own purposes, its easier to remember different commands when I organize them myself.</h5><h1 id="Docker-administration-cheat-sheet"><a href="#Docker-administration-cheat-sheet" class="headerlink" title="Docker administration cheat sheet"></a>Docker administration cheat sheet</h1><p><em>Docker images are a source file (like an .ISO) that is used to start a container (an installed system). Periodic maintenance is necessary because a Docker container remains on your system even after it exits.</em></p>
+<h2 id="What’s-running"><a href="#What’s-running" class="headerlink" title="What’s running?"></a>What’s running?</h2><p>Show all running local containers with container id, image it’s based on, any open ports, commands that it runs on startup, and when it was created.</p>
+<ul>
+<li>Docker ps</li>
+</ul>
+<p>Show all local containers (running or not) with short container id, image it’s based on, any open ports, commands that run on startup, and when it was created</p>
+<ul>
+<li>Docker ps –a or -l</li>
+</ul>
+<p>Show only the container id of all local containers (running or not running).</p>
+<ul>
+<li>Docker ps -aq or -lq</li>
+</ul>
+<p>Show the same info as –a or –l but with the full container ID rather than the shortened one.</p>
+<ul>
+<li>Docker ps –a –no-trunc</li>
+</ul>
+<p>Pause the container with the specified ID (which you can get with the ps command)</p>
+<ul>
+<li>Docker pause <container id></li>
+</ul>
+<p>Restart a previously paused container with the specified ID (which you can get with the ps command)</p>
+<ul>
+<li>Docker start <container id></li>
+</ul>
+<h2 id="Local-Images"><a href="#Local-Images" class="headerlink" title="Local Images"></a>Local Images</h2><p>Show all locally stored image files, with a common name (referred to as a repository), a 12 character ID, the size of the image file and how long ago the image was created. There may also be a tag indicating the image file version</p>
+<ul>
+<li>Docker images</li>
+</ul>
+<h2 id="Shutdown-containers"><a href="#Shutdown-containers" class="headerlink" title="Shutdown containers"></a>Shutdown containers</h2><p>Gracefully shut down an active container with the id or short name (which you can get with the ps command) – this is preferable to kill.</p>
+<ul>
+<li>Docker stop <container ID> or <name></li>
+</ul>
+<p>If stop doesn’t work you can forcefully shut down an active container with the id or short name (which you can get with the ps command)</p>
+<ul>
+<li>Docker kill <container ID> or <name></li>
+</ul>
+<p>To force a shut down of a running container and delete it</p>
+<ul>
+<li>Docker rm –f <containerID></li>
+</ul>
+<h2 id="Cleanup"><a href="#Cleanup" class="headerlink" title="Cleanup"></a>Cleanup</h2><p>Delete the container identified with the specified ID (which you can get with the ps command)</p>
+<ul>
+<li>Docker rm <container id></li>
+</ul>
+<p>Delete a docker image file (a source file for containers) identified with the specified id (which you can get with the ps command)</p>
+<ul>
+<li>Docker rmi <image name></li>
+</ul>
+<p>To delete all of the containers on your local system (be careful!), use this command</p>
+<ul>
+<li>Docker rm $(docker ps –a –q)</li>
+</ul>
+<p>That’s all for now! Coming up I have posts on running containers, and how to attach the host file system as a volume in a container.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/04/25/docker-admin-cheat-sheet-part-1/" data-id="ckegh1zy700213oued5v18wxn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cannot-connect-to-the-docker-daemon-fixed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/06/cannot-connect-to-the-docker-daemon-fixed/" class="article-date">
+  <time datetime="2016-02-06T19:10:08.000Z" itemprop="datePublished">2016-02-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Docker/">Docker</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/06/cannot-connect-to-the-docker-daemon-fixed/">Cannot connect to the Docker daemon - fixed!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3258#main"><img src="http://edpflager.com/wp-content/uploads/2016/02/containers-1529075-638x480-300x226.jpg" alt="containers"></a>A quick note this time around: After installing Docker on my Linux Mint laptop, I wanted to be able to run it with my normal user account and not have to SUDO every time I wanted to start a container. (Please be advised that doing so can be considered a HUGE security hole, but since I am just testing Docker, I was willing to risk it). In order to do this, all of the documentation I found said to create a Docker group, and then add my user account to that group, and restart. This is fairly simple to accomplish with the GUI Users and Groups tool. The Docker daemon then uses that group to see if the user account has permissions to start Docker and connect to the daemon. The result? I would get this error: <em>Cannot connect to the Docker daemon. Is ‘docker daemon’ running on this host?</em> After trying several things, I finally found the solution.</p>
+<ol>
+<li><p>From a terminal prompt run this command:</p>
+<p>echo $DOCKER_HOST</p>
+<p>You should see a line indicating your Docker host is set to an IP address. You will need to clear it.</p>
+</li>
+<li><p>At the terminal prompt, switch  to your home folder:</p>
+<p>cd ~</p>
+</li>
+<li><p>Now, edit your shell profile:</p>
+<p> nano ./.profile</p>
+</li>
+<li><p>Look for a line like this:</p>
+<p> export DOCKER_HOST=tcp://127.0.0.1:4243</p>
+</li>
+<li><p>Add a comment marker (#) before it or delete the line completely. Save your profile file and exit.</p>
+</li>
+<li><p>Restart your system, and you should now be able to run Docker using your normal user account.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/02/06/cannot-connect-to-the-docker-daemon-fixed/" data-id="ckegh1zxg000n3oue7u5rg55z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-install-the-tor-browser-on-linux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/10/install-the-tor-browser-on-linux/" class="article-date">
+  <time datetime="2016-01-10T07:34:59.000Z" itemprop="datePublished">2016-01-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/install-the-tor-browser-on-linux/">Install the Tor Browser on Linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3228#main"><img src="http://edpflager.com/wp-content/uploads/2016/01/onions-1463141-225x300.jpg" alt="DCF 1.0"></a> The TOR project was started by United States Naval Research Lab employees in the early part of the 21st century as a way to protect intelligence communications  online. It was open sourced in 2004, and continues to be supported by the Electronic Frontier Foundation. As privacy as continued to decline on the Internet, interest in the Tor Browser and Tor project has increased. For more information on TOR see this recent <a target="_blank" rel="noopener" href="http://www.salon.com/2016/01/08/this_is_the_web_browser_you_should_be_using_if_you_care_at_all_about_security_partner/">article at Salon.com</a>. I would like to note that I don’t support or condone the use of TOR for illicit or illegal purposes, but for those who feel that their privacy is important , I am providing these instructions for how to install the Tor Browser on Linux. These instructions should work for most Linux distros.</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/01/10/install-the-tor-browser-on-linux/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2016/01/10/install-the-tor-browser-on-linux/" data-id="ckegh1zzg004z3oueaih6fh26" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cassandra-installation-on-linux-mint" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/20/cassandra-installation-on-linux-mint/" class="article-date">
+  <time datetime="2015-12-20T18:46:18.000Z" itemprop="datePublished">2015-12-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/20/cassandra-installation-on-linux-mint/">Cassandra Installation on Linux Mint</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3216#main"><img src="http://edpflager.com/wp-content/uploads/2015/12/Cassandra_logo.png" alt="Cassandra_logo"></a>NoSQL databases are multiplying faster that anyone could have imagined when Google released their Google File System and MapReduce papers in 2003 and 2004 - the inspiration for a host of NoSQL database developers. The NoSQL project that became Apache Cassandra was originally developed at Facebook as the back-end for their Inbox Search feature. It was released as open source in July 2008 and later moved to the Apache Foundation. Gaining in popularity in the intervening time,  the website <a target="_blank" rel="noopener" href="http://db-engines.com/en/ranking">db-engines.com</a> now ranks Cassandra the eighth most popular data management system. Setting up a development version of Cassandra on Linux Mint is pretty straightforward, and this tutorial will walk through the process. At the time of this writing, Cassandra 3.0.1 had just been released. It requires Java 8 or later and at least 8GB of RAM. Version 2.2.4 is available as the most current stable version, which will run with Java 6 or later with 4GB or RAM. If you intend to use <a target="_blank" rel="noopener" href="https://docs.datastax.com/en/upgrade/doc/upgrade/opscenter/opscCompatibility.html">DataStax’s OpsCenter</a> management tool be aware that it does not currently support either version. To illustrate the installation of OpsCenter I will be covering the older Cassandra version 2.1 which IS supported by OpsCenter. DataStax notes on their website that the next version of OpsCenter will support Cassandra 2.2 and 3.0. The difference between installing version 2.2 or 3.0 is minimal and I’ll note that as we process. Also, be aware that the Linux Mint update center may try to upgrade your system to 3.0 once you are complete.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/12/20/cassandra-installation-on-linux-mint/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/12/20/cassandra-installation-on-linux-mint/" data-id="ckegh1zxh000p3oue03d12rji" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-use-linux-mint-as-a-server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/14/use-linux-mint-as-a-server/" class="article-date">
+  <time datetime="2015-12-14T19:53:39.000Z" itemprop="datePublished">2015-12-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/14/use-linux-mint-as-a-server/">Use Linux Mint as a Server</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/?attachment_id=3193#main"><img src="http://edpflager.com/wp-content/uploads/2015/12/mortar-mint-300x272.png" alt="mortar-mint"></a>Linux Mint has been consistently at the top of the DistroWatch top ten list for more than a year due I am sure to its ease of use and solid performance. As a general purpose distribution, Mint is offered with several different desktop environments, but interestingly, no separate server distribution. However, it is possible to configure Mint as a server, and this article covers the basic setup I follow to configure a Mint system for <strong>development server</strong> purposes. As a warning however, be sure to lock your system down with appropriate security precautions before using one as a production server. Below are the standard steps I use while configuring Mint for <strong>development systems</strong>. Because I follow these steps pretty regularly, I have pulled them out as a separate article, and will link back to this as necessary for any future tutorials.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/12/14/use-linux-mint-as-a-server/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/12/14/use-linux-mint-as-a-server/" data-id="ckegh202800cb3oueap2cdcmk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-use-gmailhotmail-with-pentaho-bi-server-community" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/08/use-gmailhotmail-with-pentaho-bi-server-community/" class="article-date">
+  <time datetime="2015-12-08T15:15:51.000Z" itemprop="datePublished">2015-12-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Pentaho/">Pentaho</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/08/use-gmailhotmail-with-pentaho-bi-server-community/">Use GMail with Pentaho BI-Server Community</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Email servers are fairly common in a lot of organizations, but many smaller companies elect to use outside hosting for their email. There are myriad reasons for doing so, and the choice obviously makes sense, otherwise they wouldn’t do it. If your organization is using Google Gmailfor its email, you can set up Pentaho’s BI Server to use it as your email server. In this brief article, I’ll walk you through the settings you’ll need to use to make it work. <img src="http://edpflager.com/wp-content/uploads/2015/12/Home-menu-195x300.png" alt="Home menu">To access the email settings in the Pentaho User Console, login to your BI-Server website with an Administrator account. Click on the large HOME menu item, and at the bottom of the menu that appears, click on Administration. When the Administration screen appears, click on the Email Server option in the menu on the left. The screen will update with the Email Server settings fields. Below are instructions for what information to use to populate the fields depending on the hosting service you are using.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/12/08/use-gmailhotmail-with-pentaho-bi-server-community/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/12/08/use-gmailhotmail-with-pentaho-bi-server-community/" data-id="ckegh202700c83oue21yodn1h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-apacheds-ldap-part-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/03/apacheds-ldap-part-4/" class="article-date">
+  <time datetime="2015-12-03T12:57:56.000Z" itemprop="datePublished">2015-12-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/03/apacheds-ldap-part-4/">ApacheDS (LDAP) - Part 4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2015/12/users.png"><img src="http://edpflager.com/wp-content/uploads/2015/12/users-300x213.png" alt="users"></a>This is part 4 (the last part) of my series on using Apache Directory Server (ApacheDS), an open source LDAP implementation. Parts <a target="_blank" rel="noopener" href="http://edpflager.com/?p=3029">1</a>-<a target="_blank" rel="noopener" href="http://edpflager.com/?p=3055">2</a> covered getting ApacheDS installed, as well as connecting the configuration application to it to make changes to the structure of the directory. In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=3081">part 3</a>, I walked through adding a new Organizational Unit from scratch to your LDAP tree. In this last part I’ll cover adding a new user, using an existing user object as a template.</p>
+<h5 id="ADD-A-NEW-USER"><a href="#ADD-A-NEW-USER" class="headerlink" title="ADD A NEW USER"></a>ADD A NEW USER</h5><p>If you have been following these tutorials in order, you should have an DIT tree with an OU called Employees under your DC entry. Right click on the Employees OU you just created and chose New -&gt; New Entry from the menu that appears. You’ll be prompted to select : “Create entry from scratch” or “Use existing entry as a template”. Choose the option to Use an Existing entry as a template. Then click the BROWSE button on the right.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/12/03/apacheds-ldap-part-4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/12/03/apacheds-ldap-part-4/" data-id="ckegh1zxc000h3oue90gtas1f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-apacheds-ldap-on-linux-mint-part-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/29/apacheds-ldap-on-linux-mint-part-3/" class="article-date">
+  <time datetime="2015-11-29T17:45:01.000Z" itemprop="datePublished">2015-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Blog/">Blog</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/29/apacheds-ldap-on-linux-mint-part-3/">ApacheDS (LDAP) - Part 3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://edpflager.com/wp-content/uploads/2015/11/ExampleTree.png" alt="ExampleTree">In <a target="_blank" rel="noopener" href="http://edpflager.com/?p=3029">part 1 of this series</a>, I covered installing the Apache Directory Server (ApacheDS), an open source LDAP server and in <a target="_blank" rel="noopener" href="http://edpflager.com/?p=3055">part 2</a>, I discussed configuring the Apache Directory Studio application to connect to your ApacheDS instance. In this third part, I will look at replacing the default Example schema in ApacheDS with a new one, and adding a new organizational unit to the directory. When you first open Apache Directory Studio, on the left side of the screen under the LDAP browser tab, you’ll see a DIT (Directory Information Tree) hierarchy like the one illustrated here. The ROOT DSE (Directory System Agent Server Entry) is the start of the tree and has no associated properties. Under that you will see four nodes. The first is the top level entry for  a specific domain, denoted by “dc=”. In this case, there are two dc (domain component) parameters, that together indicate that is domain is: <strong>example.com.</strong> Below that are three more nodes which define system and schema settings (ou-config, ou=schema and ou=system). There is a significant amount of detail contained here, and its outside the scope of what I am trying to cover. Please check the <a target="_blank" rel="noopener" href="http://directory.apache.org/apacheds/basic-user-guide.html">ApacheDS website</a> for more explanations.</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/11/29/apacheds-ldap-on-linux-mint-part-3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2015/11/29/apacheds-ldap-on-linux-mint-part-3/" data-id="ckegh1zx9000e3ouebba72tva" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/technical/" rel="tag">technical</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

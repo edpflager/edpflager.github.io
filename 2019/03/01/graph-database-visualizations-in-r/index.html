@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Graph Database Visualizations in R | EdPflager.com</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Its been a couple of weeks since my last post, and I’ve been experimenting more with graph databases. One of the more common graph database examples explores the relationship between air traffic carri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Graph Database Visualizations in R">
+<meta property="og:url" content="http://edpflager.github.io/2019/03/01/graph-database-visualizations-in-r/index.html">
+<meta property="og:site_name" content="EdPflager.com">
+<meta property="og:description" content="Its been a couple of weeks since my last post, and I’ve been experimenting more with graph databases. One of the more common graph database examples explores the relationship between air traffic carri">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2019/02/ClevelandCarriers.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2019/03/DiagrammerAirline-1024x619.png">
+<meta property="og:image" content="http://edpflager.com/wp-content/uploads/2019/03/CLERoutes-1024x620.png">
+<meta property="article:published_time" content="2019-03-01T03:52:39.000Z">
+<meta property="article:modified_time" content="2020-08-30T02:25:28.144Z">
+<meta property="article:author" content="Ed Pflager">
+<meta property="article:tag" content="howto">
+<meta property="article:tag" content="SQL Server">
+<meta property="article:tag" content="graph database">
+<meta property="article:tag" content="ggplot2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://edpflager.com/wp-content/uploads/2019/02/ClevelandCarriers.png">
+  
+    <link rel="alternate" href="/atom.xml" title="EdPflager.com" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">EdPflager.com</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://edpflager.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-graph-database-visualizations-in-r" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/01/graph-database-visualizations-in-r/" class="article-date">
+  <time datetime="2019-03-01T03:52:39.000Z" itemprop="datePublished">2019-03-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>►<a class="article-category-link" href="/categories/Business-Intelligence/">Business Intelligence</a>►<a class="article-category-link" href="/categories/Linux/">Linux</a>►<a class="article-category-link" href="/categories/Misc/">Misc</a>►<a class="article-category-link" href="/categories/R/">R</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Graph Database Visualizations in R
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2019/02/ClevelandCarriers.png"><img src="http://edpflager.com/wp-content/uploads/2019/02/ClevelandCarriers.png"></a>Its been a couple of weeks since my last post, and I’ve been experimenting more with graph databases. One of the more common graph database examples explores the relationship between air traffic carriers, and their routes. The nodes are the various cities that carriers fly between, routes are the edges connecting the nodes, and the number of carriers or the flights per day servicing those routes can be a value for the edge. For my data exploration, I started with the latest data from the <a target="_blank" rel="noopener" href="https://www.bts.gov/">Bureau of Transportation Statistics website</a>, to get a data set of US airports, and the <a target="_blank" rel="noopener" href="https://www.transtats.bts.gov/Tables.asp?DB_ID=110&DB_Name=Air%20Carrier%20Statistics%20(Form%2041%20Traffic)-%20%20U.S.%20Carriers&DB_Short_Name=Air%20Carriers">latest breakdown of US air carriers</a>. I uploaded the raw data to a SQL Server to create tables - a set of Graph database tables and a set of normal tables. Working with an assumption that a carrier who had a route out of city has a corresponding route into a city, I created queries to narrow down the returned data to only routes from Cleveland-Hopkins International and Detroit Wayne County airports. (As an aside, population for the Cleveland Metro area is about 2.0 million people, and for Detroit 4.3 million which looks to play into the results.</p>
+<a id="more"></a>
+<p>My first stab at visualizing this data was similar to what I did previously with DiagrammeR.  I loaded  the data from SQL Server into two data frames and added edges and nodes to a graph object. I did encounter some issues, since I am running SQL Server 2017 for Linux and R Studio on a laptop with only 4GB or RAM, where if I attempted to graph more that 30 nodes, my code would error out. Limiting the output to routes with more than 2 carriers allowed me to generate this visualization: <a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2019/03/DiagrammerAirline.png"><img src="http://edpflager.com/wp-content/uploads/2019/03/DiagrammerAirline-1024x619.png"></a> The center node is the Cleveland airport with the US Department of Transportation’s three letter abbreviation. Surrounding it is a dandelion effect showing the various nodes that have a direct connection. Those nodes are also labeled with the destinations three letter abbreviation.</p>
+<h3 id="ISSUES-WITH-THIS-VISUALIZATION"><a href="#ISSUES-WITH-THIS-VISUALIZATION" class="headerlink" title="ISSUES WITH THIS VISUALIZATION"></a>ISSUES WITH THIS VISUALIZATION</h3><p>I wasn’t happy with visualization because it has a number of issues. First the abbreviations are difficult to decipher unless you are familiar with them. JFK and LGA are John Kennedy and LaGuardia airports in New York respectively, DTW is Detroit, but after that I have to look them up. Second, the placement of the airport nodes is somewhat random. If you run the code multiple times, it generates different placements. Third, there is no designation for routes with more traffic. Looking at the chart at  the top, you can see that there are eight carriers running between Cleveland and Chicago (ORD), but the edge line is no different  that the one to Raleigh/Durham which has three carriers servicing it. While I could have added a label or tool tip to the edge line to indicate the route count, and the same to the destination nodes, I wanted more geographic information as well. Unfortunately, DiagrammeR does not supply that  type of graph visualization. In the interest of completeness, here is the code to generate the dandelion.</p>
+<p>library c(odbc)<br>library(DiagrammeR)<br>library(dplyr)<br>library(maps)</p>
+<h2 id="Connect-to-the-Database-server"><a href="#Connect-to-the-Database-server" class="headerlink" title="Connect to the Database server"></a>Connect to the Database server</h2><p>con &lt;- dbConnect(odbc::odbc(),<br>                 .connection_string = “Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AirTravel;Uid=sa;Pwd=********;”)</p>
+<h2 id="Union-of-Cleveland-airport-information-so-its-included-in-Airport-list"><a href="#Union-of-Cleveland-airport-information-so-its-included-in-Airport-list" class="headerlink" title="Union of Cleveland airport information so its included in Airport list."></a>Union of Cleveland airport information so its included in Airport list.</h2><h6 id="ADD-in-the-ID-code-from-the-dataset-and-join-on-that"><a href="#ADD-in-the-ID-code-from-the-dataset-and-join-on-that" class="headerlink" title="ADD in the ID code from the dataset and join on that."></a>ADD in the ID code from the dataset and join on that.</h6><p>airports &lt;-<br>    dbGetQuery(con, ‘SET nocount on;<br>                     SELECT ait.AIRPORT_ID,<br>                            LEFT(ait.AIRPORT,3) as AIRPORT_CODE,<br>                            ait.AIRPORT_ID as DESTINATION_ID,<br>                            ait.DISPLAY_AIRPORT_NAME,<br>                            ait.DISPLAY_AIRPORT_CITY_NAME_FULL,<br>                            ait.LATITUDE,<br>                            ait.LONGITUDE,<br>                            ait.AIRPORT_STATE_NAME<br>                     FROM Routes rt<br>                     JOIN Airports ai ON rt.$from_id = ai.$node_id<br>                     JOIN Airports ait ON rt.$to_id = ait.$node_id<br>                     WHERE ai.AIRPORT_ID = 11042 and rt.CarrierCount &gt; 2<br>                     UNION ALL<br>                     SELECT top 1 ai2.AIRPORT_ID,<br>                            LEFT(ai2.AIRPORT,3) as AIRPORT_CODE ,<br>                            ai2.AIRPORT_ID as DESTINATION_ID,<br>                            ai2.DISPLAY_AIRPORT_NAME,<br>                            ai2.DISPLAY_AIRPORT_CITY_NAME_FULL,<br>                            ai2.LATITUDE,<br>                            ai2.LONGITUDE,<br>                            ai2.AIRPORT_STATE_NAME<br>                       FROM Routes rt2<br>                       JOIN Airports ai2 ON rt2.$from_id = ai2.$node_id<br>                      WHERE ai2.AIRPORT_ID = 11042;’)</p>
+<h6 id="ADD-IN-THE-FROM-AND-TO-AIRPORT-ID-CODES-and-JOIN-ON-THOSE"><a href="#ADD-IN-THE-FROM-AND-TO-AIRPORT-ID-CODES-and-JOIN-ON-THOSE" class="headerlink" title="ADD IN THE FROM AND TO AIRPORT ID CODES and JOIN ON THOSE."></a>ADD IN THE FROM AND TO AIRPORT ID CODES and JOIN ON THOSE.</h6><h2 id="Get-Routes-edge-data"><a href="#Get-Routes-edge-data" class="headerlink" title="Get Routes edge data"></a>Get Routes edge data</h2><p>routes &lt;-<br>     dbGetQuery(con, ‘SET nocount on;<br>                      SELECT TOP 30 ait.AIRPORT_ID as TO_COL,<br>                             ai.AIRPORT_ID as FROM_COL,<br>                             CarrierCount<br>                      FROM Routes rt<br>                      JOIN Airports ai ON rt.$from_id = ai.$node_id<br>                      JOIN Airports ait ON rt.$to_id = ait.$node_id<br>                      WHERE ai.AIRPORT_ID = 11042 and rt.CarrierCount &gt; 2;’)</p>
+<p>graph &lt;-<br>     create_graph() %&gt;%<br>      add_nodes_from_table( table = airports,<br>               label_col = AIRPORT_CODE) %&gt;%<br>                    add_edges_from_table(<br>                       table = routes,<br>                       from_col = FROM_COL,<br>                       to_col= TO_COL,<br>                       from_to_map = AIRPORT_ID)</p>
+<p>render_graph(graph, layout = “nicely”)   </p>
+<h3 id="MAPS-visualization"><a href="#MAPS-visualization" class="headerlink" title="MAPS visualization"></a>MAPS visualization</h3><p><a target="_blank" rel="noopener" href="http://edpflager.com/wp-content/uploads/2019/03/CLERoutes.png"><img src="http://edpflager.com/wp-content/uploads/2019/03/CLERoutes-1024x620.png"></a>   I like this visual much better than the dandelion. It shows the location of the origin node relative to the destination nodes, and by coloring only the states where there are destinations, you can see that there are clusters where you can’t get a direct flight from Cleveland. Unlike the first visual, this one remains static so whenever you run it with the same dataset, you will get the same visual. There are still some things I don’t like with this visual, though. The destination nodes don’t indicate the city, and the lines don’t indicate the number of carriers servicing those routes. I did attempt to incorporate the plotly package into this graph to provide tooltips, but it does not work with the geom_curve aesthetic in ggplot2. I’d also like to use parameters to make the code reusable. You would be prompted to select a city and then the visual would update from that the location. Although this is not complete, the code as it currently looks is below. I expect to be working longer hours on a work project so I wanted to get this out before too much time has passed between posts.</p>
+<p>library(ggplot2)<br>library(maps)<br>library(odbc)<br>library(dplyr)</p>
+<h2 id="Connect-to-the-Database-server-1"><a href="#Connect-to-the-Database-server-1" class="headerlink" title="Connect to the Database server"></a>Connect to the Database server</h2><p>con &lt;- dbConnect(odbc::odbc(),<br>           .connection_string = “Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AirTravel;Uid=sa;Pwd=********;”)</p>
+<h2 id="Get-Airport-node-data-that-are-destinations-from-selected-airport-could-retrieve-more-data-as-necessary"><a href="#Get-Airport-node-data-that-are-destinations-from-selected-airport-could-retrieve-more-data-as-necessary" class="headerlink" title="Get Airport node data that are destinations from selected airport - could retrieve more data as necessary."></a>Get Airport node data that are destinations from selected airport - could retrieve more data as necessary.</h2><h2 id="Union-of-Cleveland-airport-information-so-its-included-in-Airport-list-1"><a href="#Union-of-Cleveland-airport-information-so-its-included-in-Airport-list-1" class="headerlink" title="Union of Cleveland airport information so its included in Airport list."></a>Union of Cleveland airport information so its included in Airport list.</h2><h6 id="This-is-the-destination-data-set"><a href="#This-is-the-destination-data-set" class="headerlink" title="This is the destination data set."></a>This is the destination data set.</h6><p>airports &lt;-<br>     dbGetQuery(con, ‘SET nocount on;<br>                      SELECT DISTANCE,<br>                             DEST_CITY_NAME,<br>                             aid.DISPLAY_AIRPORT_NAME as DEST_AIRPORT,<br>                             aid.LATITUDE as DEST_LATITUDE,<br>                             aid.LONGITUDE as DEST_LONGITUDE,<br>                             aid.[Age (in years)] as DEST_AIRPORT_AGE,<br>                             aid.AIRPORT_STATE_NAME,<br>                             aio.LATITUDE as ORIG_LATITUDE,<br>                             aio.LONGITUDE as ORIG_LONGITUDE,<br>                             aio.[Age (in years)] as ORIG_AIRPORT_AGE,<br>                             sum(CarrierCount) as TotalRoute<br>                        FROM Routes2018 rte<br>                        JOIN USAirports aid ON rte.DEST_AIRPORT_ID = aid.AIRPORT_ID<br>                        JOIN USAirports aio ON rte.ORIGIN_AIRPORT_ID = aio.AIRPORT_ID<br>                       WHERE ORIGIN_AIRPORT_ID = 11042<br>                         AND aid.AIRPORT_IS_LATEST = 1<br>                         AND aio.AIRPORT_IS_LATEST = 1<br>                         AND class = ‘F’<br>                         AND aid.AIRPORT_STATE_NAME NOT IN (‘Hawaii’, ‘Puerto Rico’, ‘Alaska’)<br>                    GROUP BY DISTANCE, DEST_CITY_NAME, aid.DISPLAY_AIRPORT_NAME, aid.LATITUDE,<br>                         aid.LONGITUDE, aid.[Age (in years)], aid.AIRPORT_STATE_NAME,<br>                         aio.LATITUDE, aio.LONGITUDE, aio.[Age (in years)];’)</p>
+<h6 id="This-is-the-origin-data-set-Use-a-parameter-to-generate-this"><a href="#This-is-the-origin-data-set-Use-a-parameter-to-generate-this" class="headerlink" title="This is the origin data set. Use a parameter to generate this?"></a>This is the origin data set. Use a parameter to generate this?</h6><p>orig_airport &lt;-<br>     dbGetQuery(con, ‘SET nocount on;<br>                      SELECT LATITUDE as ORIG_LATITUDE,<br>                             LONGITUDE as ORIG_LONGITUDE,<br>                             [Age (in years)] as ORIG_AIRPORT_AGE<br>                        FROM USAirports<br>                       WHERE AIRPORT_ID = 11042<br>                         AND AIRPORT_IS_LATEST = 1;’)</p>
+<h2 id="Call-the-US-States-map"><a href="#Call-the-US-States-map" class="headerlink" title="Call the US States map"></a>Call the US States map</h2><p>usa &lt;- map_data(“state”)</p>
+<h2 id="Convert-State-names-into-a-character-vector-Have-to-convert-names-to-lower-case"><a href="#Convert-State-names-into-a-character-vector-Have-to-convert-names-to-lower-case" class="headerlink" title="Convert State names into a character vector. Have to convert names to lower case."></a>Convert State names into a character vector. Have to convert names to lower case.</h2><p>state_names &lt;- unique(airports$AIRPORT_STATE_NAME) %&gt;%<br>     lapply(tolower)</p>
+<h2 id="Create-a-seperate-data-frame-of-destination-states-This-allows-ggplot2-and-maps-to-color-them"><a href="#Create-a-seperate-data-frame-of-destination-states-This-allows-ggplot2-and-maps-to-color-them" class="headerlink" title="Create a seperate data frame of destination states. This allows ggplot2 and maps to color them"></a>Create a seperate data frame of destination states. This allows ggplot2 and maps to color them</h2><p>destinations &lt;- subset(usa, region %in% state_names)</p>
+<h2 id="Generate-the-visualization"><a href="#Generate-the-visualization" class="headerlink" title="Generate the visualization"></a>Generate the visualization</h2><p>ggplot(data = destinations) +<br>       geom_polygon(aes(x = long, y = lat, group = group), fill = “lightsteelblue”, color = “black”) +<br>       coord_fixed(1.3) + geom_point(data = airports, aes(x= DEST_LONGITUDE, y=DEST_LATITUDE), shape = 10, color = “midnightblue”, size = 2) +<br>       geom_polygon(data = usa, aes(x=long, y = lat, group = group), fill = NA, color = “black”) +<br>       geom_curve(data=airports, aes(x=ORIG_LONGITUDE, y=ORIG_LATITUDE, xend=DEST_LONGITUDE, yend=DEST_LATITUDE), curvature = 0.2, color=”red”) +<br>       geom_point(data=orig_airport, aes(x=ORIG_LONGITUDE, y=ORIG_LATITUDE), shape = 8, color=”red”, size = 5)</p>
+<p>  That’s all I have for now. As I spend some more time on this, I will post a followup.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://edpflager.github.io/2019/03/01/graph-database-visualizations-in-r/" data-id="ckegh1zyr003g3oue4z2x3fr0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/howto/" rel="tag">howto</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Install RStudio&#39;s Shiny Server on Linux Mint
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Diagram SQL Server Graph Databases in R - Part 4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Business-Intelligence/">Business Intelligence</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Misc/">Misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pentaho/">Pentaho</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R/">R</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/R-Markdown-Cookbook/">R Markdown Cookbook</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Big-Data/" rel="tag">Big Data</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDH/" rel="tag">CDH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloudera/" rel="tag">Cloudera</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ETL/" rel="tag">ETL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Graph-Databases/" rel="tag">Graph Databases</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HUE/" rel="tag">HUE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HortonWorks/" rel="tag">HortonWorks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/How-to/" rel="tag">How-to</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LDAP/" rel="tag">LDAP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mint/" rel="tag">Mint</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDI/" rel="tag">PDI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandoc/" rel="tag">Pandoc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/R-Markdown/" rel="tag">R Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RStudio/" rel="tag">RStudio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL-Server/" rel="tag">SQL Server</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SysAdmin/" rel="tag">SysAdmin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/YARN/" rel="tag">YARN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookbook/" rel="tag">cookbook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/external-article/" rel="tag">external article</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ggplot2/" rel="tag">ggplot2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/goofy/" rel="tag">goofy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph-database/" rel="tag">graph database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/guides/" rel="tag">guides</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/howto/" rel="tag">howto</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/humor/" rel="tag">humor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impala/" rel="tag">impala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inspiration/" rel="tag">inspiration</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/" rel="tag">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kettle/" rel="tag">kettle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/metadata/" rel="tag">metadata</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nat-HNS-failed/" rel="tag">nat: HNS failed</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rvest/" rel="tag">rvest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/technical/" rel="tag">technical</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tidyverse/" rel="tag">tidyverse</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Big-Data/" style="font-size: 12.27px;">Big Data</a> <a href="/tags/CDH/" style="font-size: 15.45px;">CDH</a> <a href="/tags/Cloudera/" style="font-size: 13.64px;">Cloudera</a> <a href="/tags/ETL/" style="font-size: 18.18px;">ETL</a> <a href="/tags/Graph-Databases/" style="font-size: 10px;">Graph Databases</a> <a href="/tags/HUE/" style="font-size: 10.45px;">HUE</a> <a href="/tags/Hadoop/" style="font-size: 15.91px;">Hadoop</a> <a href="/tags/HortonWorks/" style="font-size: 11.82px;">HortonWorks</a> <a href="/tags/How-to/" style="font-size: 19.09px;">How-to</a> <a href="/tags/LDAP/" style="font-size: 11.36px;">LDAP</a> <a href="/tags/Linux/" style="font-size: 13.18px;">Linux</a> <a href="/tags/Mac/" style="font-size: 12.73px;">Mac</a> <a href="/tags/Mint/" style="font-size: 14.55px;">Mint</a> <a href="/tags/MySQL/" style="font-size: 12.27px;">MySQL</a> <a href="/tags/PDI/" style="font-size: 16.36px;">PDI</a> <a href="/tags/Pandoc/" style="font-size: 10px;">Pandoc</a> <a href="/tags/R-Markdown/" style="font-size: 15px;">R Markdown</a> <a href="/tags/RStudio/" style="font-size: 10px;">RStudio</a> <a href="/tags/SQL-Server/" style="font-size: 14.55px;">SQL Server</a> <a href="/tags/SysAdmin/" style="font-size: 18.64px;">SysAdmin</a> <a href="/tags/Ubuntu/" style="font-size: 14.09px;">Ubuntu</a> <a href="/tags/Windows/" style="font-size: 11.36px;">Windows</a> <a href="/tags/YARN/" style="font-size: 11.36px;">YARN</a> <a href="/tags/centos/" style="font-size: 11.36px;">centos</a> <a href="/tags/cookbook/" style="font-size: 16.82px;">cookbook</a> <a href="/tags/external-article/" style="font-size: 11.36px;">external article</a> <a href="/tags/ggplot2/" style="font-size: 10px;">ggplot2</a> <a href="/tags/goofy/" style="font-size: 10.91px;">goofy</a> <a href="/tags/graph-database/" style="font-size: 11.82px;">graph database</a> <a href="/tags/guides/" style="font-size: 17.73px;">guides</a> <a href="/tags/howto/" style="font-size: 20px;">howto</a> <a href="/tags/humor/" style="font-size: 10.91px;">humor</a> <a href="/tags/impala/" style="font-size: 10.45px;">impala</a> <a href="/tags/inspiration/" style="font-size: 10.45px;">inspiration</a> <a href="/tags/install/" style="font-size: 17.27px;">install</a> <a href="/tags/kettle/" style="font-size: 16.82px;">kettle</a> <a href="/tags/metadata/" style="font-size: 11.36px;">metadata</a> <a href="/tags/nat-HNS-failed/" style="font-size: 10px;">nat: HNS failed</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/rvest/" style="font-size: 10px;">rvest</a> <a href="/tags/technical/" style="font-size: 19.55px;">technical</a> <a href="/tags/tidyverse/" style="font-size: 10px;">tidyverse</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">February 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09/">September 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">July 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">June 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">May 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">April 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">March 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/02/">February 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">December 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">June 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">May 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">April 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/05/">May 2009</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/03/">March 2009</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/07/edpflager-com-is-now-using-https/">edpflager.com is now using HTTPS</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/27/install-rstudios-shiny-server-on-linux-mint/">Install RStudio&#39;s Shiny Server on Linux Mint</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/01/graph-database-visualizations-in-r/">Graph Database Visualizations in R</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/13/diagram-sql-server-graph-databases-in-r-part-4/">Diagram SQL Server Graph Databases in R - Part 4</a>
+          </li>
+        
+          <li>
+            <a href="/2019/02/10/diagram-sql-server-graph-databases-in-r-part-3/">Diagram SQL Server Graph Databases in R - Part 3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Ed Pflager<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
